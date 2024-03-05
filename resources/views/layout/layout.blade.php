@@ -8,7 +8,8 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body>
-    <h1>Hi guys</h1>
+    <body class="min-h-screen font-sans antialiased">
+        @include('layout.navbar')
+      @yield('content')  
     </body>
 </html>
