@@ -9,7 +9,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="min-h-screen font-sans antialiased">
-        @include('layout.navbar')
-      @yield('content')  
+        <div>@include('layout.navbar')</div>
+      @yield('content')
     </body>
 </html>
