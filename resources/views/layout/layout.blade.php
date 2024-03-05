@@ -9,7 +9,10 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="min-h-screen font-sans antialiased">
-        @include('layout.navbar')
-      @yield('content')  
+        <!-- NavBar pindah ke folder component -->
+        @include('component.navbar')
+
+        <!-- Placeholder untuk content per page -->
+        @yield('content')  
     </body>
 </html>
