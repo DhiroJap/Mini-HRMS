@@ -16,14 +16,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('page.login', [
         'title'=> 'Welcome',
-        'active' => 'welcome',
+        'active' => 'login',
     ]);
 });
 
 Route::get('/login', function () {
     return view('page.login', [
         'title'=> 'Welcome',
-        'active' => 'welcome',
+        'active' => 'login',
     ]);
 });
 
