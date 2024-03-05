@@ -5,8 +5,9 @@
 
 
             <div class="hidden items-center space-x-10 sm:flex">
-                <a href='/login' class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-[#F1F5F9] hover:text-[#0F172A] h-9 rounded-md px-3 cursor-pointer">Login</a>
-                <a href='/register' class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 px-3 bg-[#205FEB] text-[#F8FAFC] hover:bg-[#205FEB]/90 cursor-pointer">Register</a>
+                <a href='/login' class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 px-3 hover:bg-[#205FEB]/90 hover:text-[#F1F5F9] cursor-pointer {{ ($active == "welcome") ? "bg-[#205FEB] text-[#F8FAFC]" : ""}}">Login</a>
+
+                <a href='/register' class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-9 px-3 hover:bg-[#205FEB]/90 hover:text-[#F1F5F9] cursor-pointer {{ ($active == "register") ? "bg-[#205FEB] text-[#F8FAFC]" : ""}}">Register</a>
             </div>
         </div>
     </div>

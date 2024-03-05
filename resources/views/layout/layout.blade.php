@@ -10,6 +10,6 @@
     </head>
     <body class="min-h-screen font-sans antialiased">
         <div>@include('layout.navbar')</div>
-      @yield('content')
+        @yield('content')
     </body>
 </html>
