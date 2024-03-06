@@ -1,56 +1,46 @@
-@extends('layout.layout')
+@extends('layout.default')
 
 @section('content')
-<div class="lg:px-8 mx-24 my-12">
-    <!-- Buat kasih tau lagi di menu apa (reusable)-->
-    @include('layout.headergroup')
-</div>
-<div class="flex min-h-screen items-start justify-start lg:px-8 mx-24 my-12">
-    <!-- Sidebar (reusable) -->
-    @include('layout.sidebar')
-    <form class="mx-32 w-full">
-        <!-- Untuk nunjukkin lagi di page apa di menu tersebut (reusable) -->
-        @include("layout.headerpage")
-        <!-- Username -->
-        <div class="mb-4">
-            <h3 class="mb-4 font-semibold">Username</h3>
-            <input id="username" name="username" type="username" autocomplete="off" class="w-full border-solid border-gray-300 border-2 rounded-md px-4 py-0.5 text-gray-400 mb-4">
-            <h3>This is your public display name.</h3>
-        </div>
-        <!-- E-mail -->
-        <div class="mb-4">
-            <h3 class="mb-4 font-semibold">Email</h3>
-            <input id="email" name="email" type="email" autocomplete="off" class="w-full border-solid border-gray-300 border-2 rounded-md px-4 py-0.5 text-gray-400 mb-4">
-            <h3>This is your public display email.</h3>
-        </div>
-        <!-- First Name -->
-        <div class="mb-4">
-            <h3 class="mb-4 font-semibold">First Name</h3>
-            <input id="firstname" name="firstname" type="firstname" autocomplete="off" class="w-full border-solid border-gray-300 border-2 rounded-md px-4 py-0.5 text-gray-400 mb-4">
-            <h3>This is your birth first name.</h3>
-        </div>
-        <!-- Last Name -->
-        <div class="mb-4">
-            <h3 class="mb-4 font-semibold">Last Name</h3>
-            <input id="lastname" name="lastname" type="lastname" autocomplete="off" class="w-full border-solid border-gray-300 border-2 rounded-md px-4 py-0.5 text-gray-400 mb-4">
-            <h3>This is your birth last name.</h3>
-        </div>
-        <!-- Avatar -->
-        <div class="mb-4">
-            <h3 class="mb-4 font-semibold">Avatar</h3>
-            <div class="h-40 w-40 rounded-full bg-gray-200 border-solid border-gray-300 border-2 mb-4"></div>
-            <h3>This is your public display avatar.</h3>
-        </div>
-        <!-- Password -->
-        <div class="mb-4">
-            <h3 class="mb-4 font-semibold">Password</h3>
-            <input id="password" name="password" type="password" autocomplete="off" class="w-full border-solid border-gray-300 border-2 rounded-md px-4 py-0.5 mb-4">
-            <h3>This is your account password.</h3>
-        </div>
-        <div class="mb-4">
-            <button class="px-8 py-2 bg-blue-500 text-white font-medium rounded-lg">Update</button>
-        </div>
-    </form>
-</div>
+<div class="hidden space-y-6 p-10 pb-16 md:block">
+    <div class="space-y-0.5">
+        <h2 class="text-2xl font-bold tracking-tight">Profile</h2>
+        <p class="text-[#595960]">Manage your account settings here.</p>
+    </div>
 
+    <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full my-6"></div>
+
+    <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+        <aside class="-mx-4 lg:w-1/5">
+            @include('layout.sidebar')
+        </aside>
+        <div class="flex-1 lg:max-w-2xl">
+            <div class="space-y-6">
+                <div class="">
+                    <h3 class="text-lg font-medium">Edit Profile</h3>
+                    <p class="text-sm text-[#595960]">This is how your profile will be displayed.</p>
+                </div>
+
+                <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
+
+                <form action="" class="space-y-8">
+                    <x-editprofile-input desc="This is your public display name." label="Username" id="username" placeholder="dhirojap" autocomplete="off" type="text" />
+                    <x-editprofile-input desc="This is your public email." label="Email" id="email" placeholder="dhirojap@binus.edu" autocomplete="off" type="text" />
+                    <x-editprofile-input desc="This is your birth first name." label="First Name" id="first_name" placeholder="Dhiro" autocomplete="off" type="text" />
+                    <x-editprofile-input desc="This is your birth last name." label="Last Name" id="last_name" placeholder="Jap" autocomplete="off" type="text" />
+
+                    <!-- Avatar (MASIH BINGUNG COYYY, BERAT INI WKWKWKWKW) -->
+                    <div class="space-y-2">
+                        <label for="avatar" id="avatar" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Avatar</label>
+                        <div class="h-40 w-40 rounded-full bg-gray-200 border-solid border-gray-300 border-2 mb-4"></div>
+                        <p class="text-sm text-[#595960]">This is your public display avatar.</p>
+                    </div>
+
+                    <x-editprofile-input desc="This is your account password." label="Password" id="password" autocomplete="off" type="password" />
+                </form>
+
+                <button class="mt-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#2563EB] text-[#F8FAFC] hover:bg-[#2563EB]/90 h-9 px-3">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

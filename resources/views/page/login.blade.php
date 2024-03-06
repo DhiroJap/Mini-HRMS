@@ -1,4 +1,4 @@
-@extends('layout.layout')
+@extends('layout.default')
 
 @section('content')
 <div class="flex flex-col min-h-screen items-center justify-center lg:px-8">

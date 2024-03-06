@@ -37,9 +37,6 @@ Route::get('/register', function () {
 Route::get('/profile', function() {
     return view('page.auth.dashboard.profile', [
         'title' => 'Profile',
-        'active_page' => 'profile',
-        'active' => 'Dashboard',
-        'desc_page' => 'This is how your profile will be displayed.',
-        'desc' => 'Manage your account settings here.',
+        'active' => 'profile',
     ]);
 });
