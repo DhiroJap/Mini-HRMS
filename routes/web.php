@@ -49,3 +49,11 @@ Route::get('/report', function() {
         'group' => 'attendance',
     ]);
 });
+
+Route::get('/takeattendance', function () {
+    return view('page.auth.attendance.takeattendance', [
+        'title'=> 'Checkin',
+        'active' => 'Checkin',
+        'group' => 'attendance'
+    ]);
+});
