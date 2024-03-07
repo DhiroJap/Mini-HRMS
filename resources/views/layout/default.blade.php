@@ -10,9 +10,9 @@
         
     </head>
     <body class="min-h-screen font-sans antialiased">
-        <livewire:toasts />
+        <!-- <livewire:toasts /> -->
         <div>@include('layout.authenticated-navbar')</div>
         @yield('content')
-        @livewireScriptConfig
+        <!-- @livewireScriptConfig -->
     </body>
 </html>

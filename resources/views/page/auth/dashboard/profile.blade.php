@@ -23,6 +23,7 @@
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
                 <form action="" class="space-y-8">
+                    @csrf
                     <x-editprofile-input desc="This is your public display name." label="Username" id="username" placeholder="dhirojap" autocomplete="off" type="text" />
                     <x-editprofile-input desc="This is your public email." label="Email" id="email" placeholder="dhirojap@binus.edu" autocomplete="off" type="text" />
                     <x-editprofile-input desc="This is your birth first name." label="First Name" id="first_name" placeholder="Dhiro" autocomplete="off" type="text" />

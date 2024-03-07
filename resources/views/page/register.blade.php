@@ -4,6 +4,7 @@
 <div class ="flex flex-col min-h-screen items-center justify-center ">
     <div class="sm:mx-auto sm:w-full sm:max-w-lg">
         <form class="space-y-2" action="#" method="POST">
+            @csrf
             <div class="border-solid border-gray-300 border-2 rounded-lg">
                 <label for="email" class="block text-sm font-normal leading-6 text-gray-400 px-2">Email address</label>
                 <div class="my-1">
