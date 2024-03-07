@@ -11,7 +11,5 @@
     <body class="min-h-screen font-sans antialiased">
         <div>@include('layout.navbar')</div>
         @yield('content')
-
-        <script src="../../js/app.js"></script>
     </body>
 </html>
