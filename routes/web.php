@@ -42,6 +42,22 @@ Route::get('/profile', function() {
     ]);
 });
 
+Route::get('/takeattendance', function() {
+    return view('page.auth.attendance.takeattendance', [
+        'title' => 'Take Attendance',
+        'active' => 'take attendance',
+        'group' => 'attendance',
+    ]);
+});
+
+Route::get('/inputschedule', function() {
+    return view('page.auth.attendance.inputschedule', [
+        'title' => 'Input Schedule',
+        'active' => 'input schedule',
+        'group' => 'attendance',
+    ]);
+});
+
 Route::get('/report', function() {
     return view('page.auth.attendance.report', [
         'title' => 'Report',
