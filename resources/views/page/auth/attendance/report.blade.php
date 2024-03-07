@@ -3,8 +3,8 @@
 @section('content')
 <div class="hidden space-y-6 p-10 pb-16 md:block">
     <div class="space-y-0.5">
-        <h2 class="text-2xl font-bold tracking-tight">Profile</h2>
-        <p class="text-[#595960]">Manage your account settings here.</p>
+        <h2 class="text-2xl font-bold tracking-tight">Attendance</h2>
+        <p class="text-[#595960]">Manage your work schedule and attendance here.</p>
     </div>
 
     <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full my-6"></div>
@@ -16,29 +16,196 @@
         <div class="flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div class="">
-                    <h3 class="text-lg font-medium">Edit Profile</h3>
-                    <p class="text-sm text-[#595960]">This is how your profile will be displayed.</p>
+                    <h3 class="text-lg font-medium">Report</h3>
+                    <p class="text-sm text-[#595960]">This is where your weekly and monthly work report will be displayed.</p>
+                </div>
+    
+                <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
+    
+                <div class="">
+                    <h3 class="text-md font-medium">Current Date</h3>
+                    <p class="text-sm text-[#595960]">Today is {{ date("l, d F Y. h:i A") }}</p>
                 </div>
 
-                <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
-
-                <form action="" class="space-y-8">
-                    <x-editprofile-input desc="This is your public display name." label="Username" id="username" placeholder="dhirojap" autocomplete="off" type="text" />
-                    <x-editprofile-input desc="This is your public email." label="Email" id="email" placeholder="dhirojap@binus.edu" autocomplete="off" type="text" />
-                    <x-editprofile-input desc="This is your birth first name." label="First Name" id="first_name" placeholder="Dhiro" autocomplete="off" type="text" />
-                    <x-editprofile-input desc="This is your birth last name." label="Last Name" id="last_name" placeholder="Jap" autocomplete="off" type="text" />
-
-                    <!-- Avatar (MASIH BINGUNG COYYY, BERAT INI WKWKWKWKW) -->
-                    <div class="space-y-2">
-                        <label for="avatar" id="avatar" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">Avatar</label>
-                        <div class="h-40 w-40 rounded-full bg-gray-200 border-solid border-gray-300 border-2 mb-4"></div>
-                        <p class="text-sm text-[#595960]">This is your public display avatar.</p>
+                <div class="">
+                    <h3 class="text-md font-medium">Weekly Report</h3>
+                    <p class="text-sm text-[#595960]">This is your work report for the last 7 days.</p>
+                    
+                    <!-- Weekly Table -->
+                    <div class="flex flex-col mt-4">
+                        <div class="-m-1.5 overflow-x-auto">
+                            <div class="p-1.5 min-w-full inline-block align-middle">
+                                <div class="border rounded-lg shadow overflow-hidden border-[#6A6A6A]">
+                                    <table class="min-w-full divide-y divide-[#6A6A6A] text-center text-xs">
+                                        <thead class="bg-[#2563EB] font-medium text-black">
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <th scope="col" class="px-6 py-3">
+                                                    No.
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Date
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Check In Time
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Check Out Time
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Work Hours
+                                                </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#2563EB]">21 Hours</span></p>
+                </div>
 
-                    <x-editprofile-input desc="This is your account password." label="Password" id="password" autocomplete="off" type="password" />
-                </form>
+                <div class="">
+                    <h3 class="text-md font-medium">Monthly Report</h3>
+                    <p class="text-sm text-[#595960]">This is your work report for the last 30 days.</p>
+                    
+                    <!-- Monthly Table -->
+                    <div class="flex flex-col mt-4">
+                        <div class="-m-1.5 overflow-x-auto">
+                            <div class="p-1.5 min-w-full inline-block align-middle">
+                                <div class="border rounded-lg shadow overflow-hidden border-[#6A6A6A]">
+                                    <table class="min-w-full divide-y divide-[#6A6A6A] text-center text-xs">
+                                        <thead class="bg-[#2563EB] font-medium text-black">
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <th scope="col" class="px-6 py-3">
+                                                    No.
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Date
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Check In Time
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Check Out Time
+                                                </th>
+                                                <th scope="col" class="px-6 py-3">
+                                                    Work Hours
+                                                </th>
+                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                            <tr class="divide-x divide-[#6A6A6A]">
+                                                <td class="px-6 py-4">1</td>
+                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
+                                                <td class="px-6 py-4">09:53:40 AM </td>
+                                                <td class="px-6 py-4">15:06:40 PM</td>
+                                                <td class="px-6 py-4">5 Hours</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#EF4444]">56 Hours</span></p>
+                </div>
 
-                <button class="mt-2 inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#2563EB] text-[#F8FAFC] hover:bg-[#2563EB]/90 h-9 px-3">Update</button>
+                
             </div>
         </div>
     </div>
