@@ -16,28 +16,24 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('page.login', [
         'title'=> 'Welcome',
-        'active' => 'login',
     ]);
 });
 
 Route::get('/login', function () {
     return view('page.login', [
         'title'=> 'Welcome',
-        'active' => 'login',
     ]);
 });
 
 Route::get('/register', function () {
     return view('page.register', [
         'title'=> 'Register',
-        'active'=> 'register',
     ]);
 });
 
 Route::get('/profile', function() {
     return view('page.auth.dashboard.profile', [
         'title' => 'Profile',
-        'active' => 'profile',
         'group' => 'dashboard',
     ]);
 });
@@ -45,7 +41,6 @@ Route::get('/profile', function() {
 Route::get('/takeattendance', function() {
     return view('page.auth.attendance.takeattendance', [
         'title' => 'Take Attendance',
-        'active' => 'take attendance',
         'group' => 'attendance',
     ]);
 });
@@ -53,7 +48,6 @@ Route::get('/takeattendance', function() {
 Route::get('/inputschedule', function() {
     return view('page.auth.attendance.inputschedule', [
         'title' => 'Input Schedule',
-        'active' => 'input schedule',
         'group' => 'attendance',
     ]);
 });
@@ -61,7 +55,6 @@ Route::get('/inputschedule', function() {
 Route::get('/report', function() {
     return view('page.auth.attendance.report', [
         'title' => 'Report',
-        'active' => 'report',
         'group' => 'attendance',
     ]);
 });
