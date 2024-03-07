@@ -38,5 +38,14 @@ Route::get('/profile', function() {
     return view('page.auth.dashboard.profile', [
         'title' => 'Profile',
         'active' => 'profile',
+        'group' => 'dashboard',
+    ]);
+});
+
+Route::get('/report', function() {
+    return view('page.auth.attendance.report', [
+        'title' => 'Report',
+        'active' => 'report',
+        'group' => 'attendance',
     ]);
 });
