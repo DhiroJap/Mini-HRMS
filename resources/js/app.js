@@ -8,6 +8,7 @@ import "./bootstrap";
 // Alpine.plugin(ToastComponent);
 // Livewire.start();
 
+//Login Page
 document.addEventListener("DOMContentLoaded", function () {
     const loginForm = document.getElementById("login-form");
     const emailInput = document.getElementById("email");
@@ -48,4 +49,145 @@ document.addEventListener("DOMContentLoaded", function () {
         const emailRegex = /\S+@\S+\.\S+/;
         return emailRegex.test(email);
     }
+});
+
+//Attendance Page
+document.addEventListener("DOMContentLoaded", function () {
+    const takeAttendanceContent = document.getElementById(
+        "take-attendance-content",
+    );
+
+    const inputScheduleContent = document.getElementById(
+        "input-schedule-content",
+    );
+
+    const reportContent = document.getElementById("report-content");
+
+    const takeAttendanceButton = document.getElementById(
+        "take-attendance-button",
+    );
+    const inputScheduleButton = document.getElementById(
+        "input-schedule-button",
+    );
+    const reportButton = document.getElementById("report-button");
+
+    takeAttendanceButton.classList.add("bg-[#F1F5F9]", "hover:bg-[#F1F5F9]");
+    inputScheduleButton.classList.add(
+        "hover:bg-transparent",
+        "hover:underline",
+    );
+    reportButton.classList.add("hover:bg-transparent", "hover:underline");
+
+    //Click Take Attendance
+    takeAttendanceButton.addEventListener("click", function () {
+        takeAttendanceContent.classList.remove("hidden");
+        inputScheduleContent.classList.add("hidden");
+        reportContent.classList.add("hidden");
+
+        takeAttendanceButton.classList.remove(
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+            "hover:bg-transparent",
+            "hover:underline",
+        );
+        inputScheduleButton.classList.remove(
+            "hover:bg-transparent",
+            "hover:underline",
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+        );
+        reportButton.classList.remove(
+            "hover:bg-transparent",
+            "hover:underline",
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+        );
+
+        takeAttendanceButton.classList.add(
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+        );
+        inputScheduleButton.classList.add(
+            "hover:bg-transparent",
+            "hover:underline",
+        );
+        reportButton.classList.add("hover:bg-transparent", "hover:underline");
+    });
+
+    //Click Input Schedule
+    inputScheduleButton.addEventListener("click", function () {
+        takeAttendanceContent.classList.add("hidden");
+        inputScheduleContent.classList.remove("hidden");
+        reportContent.classList.add("hidden");
+
+        takeAttendanceButton.classList.remove(
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+            "hover:bg-transparent",
+            "hover:underline",
+        );
+        inputScheduleButton.classList.remove(
+            "hover:bg-transparent",
+            "hover:underline",
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+        );
+        reportButton.classList.remove(
+            "hover:bg-transparent",
+            "hover:underline",
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+        );
+
+        takeAttendanceButton.classList.add(
+            "hover:bg-transparent",
+            "hover:underline",
+        );
+        inputScheduleButton.classList.add("bg-[#F1F5F9]", "hover:bg-[#F1F5F9]");
+        reportButton.classList.add("hover:bg-transparent", "hover:underline");
+    });
+
+    //Click Report
+    reportButton.addEventListener("click", function () {
+        reportContent.classList.remove("hidden");
+        inputScheduleContent.classList.add("hidden");
+        takeAttendanceContent.classList.add("hidden");
+
+        takeAttendanceButton.classList.remove(
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+            "hover:bg-transparent",
+            "hover:underline",
+        );
+        inputScheduleButton.classList.remove(
+            "hover:bg-transparent",
+            "hover:underline",
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+        );
+        reportButton.classList.remove(
+            "hover:bg-transparent",
+            "hover:underline",
+            "bg-[#F1F5F9]",
+            "hover:bg-[#F1F5F9]",
+        );
+
+        takeAttendanceButton.classList.add(
+            "hover:bg-transparent",
+            "hover:underline",
+        );
+        inputScheduleButton.classList.add(
+            "hover:bg-transparent",
+            "hover:underline",
+        );
+        reportButton.classList.add("bg-[#F1F5F9]", "hover:bg-[#F1F5F9]");
+    });
+});
+
+//Profile Page
+document.addEventListener("DOMContentLoaded", function () {
+    const editProfileContent = document.getElementById("edit-profile-content");
+    const editProfileButton = document.getElementById("edit-profile-button");
+
+    editProfileButton.classList.add("bg-[#F1F5F9]", "hover:bg-[#F1F5F9]");
 });

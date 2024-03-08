@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('content')
-<div class="hidden space-y-6 p-10 pb-16 md:block">
+<div id="edit-profile-content" class="hidden space-y-6 p-10 pb-16 md:block">
     <div class="space-y-0.5">
         <h2 class="text-2xl font-bold tracking-tight">Profile</h2>
         <p class="text-[#595960]">Manage your account settings here.</p>
@@ -11,7 +11,7 @@
 
     <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
         <aside class="-mx-4 lg:w-1/5">
-            @include('layout.sidebar')
+            @include('components.sidebar')
         </aside>
         <div class="flex-1 lg:max-w-2xl">
             <div class="space-y-6">

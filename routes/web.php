@@ -32,30 +32,15 @@ Route::get('/register', function () {
 });
 
 Route::get('/profile', function() {
-    return view('page.auth.dashboard.profile', [
+    return view('page.auth.profile', [
         'title' => 'Profile',
-        'group' => 'dashboard',
+        'group' => 'profile',
     ]);
 });
 
-Route::get('/takeattendance', function() {
-    return view('page.auth.attendance.takeattendance', [
-        'title' => 'Take Attendance',
-        'group' => 'attendance',
+Route::get('/attendance', function () {
+    return view('page.auth.attendance', [
+        'title'=> 'Attendance',
+        'group' => 'attendance'
     ]);
 });
-
-Route::get('/inputschedule', function() {
-    return view('page.auth.attendance.inputschedule', [
-        'title' => 'Input Schedule',
-        'group' => 'attendance',
-    ]);
-});
-
-Route::get('/report', function() {
-    return view('page.auth.attendance.report', [
-        'title' => 'Report',
-        'group' => 'attendance',
-    ]);
-});
-

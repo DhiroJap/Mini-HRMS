@@ -7,7 +7,7 @@
                 <p>Welcome, <span class="text-[#009ADB]">Dhiro Jap</span></p>
                 
                 <button id="menu-button">
-                    <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full bg-[#2563EB]"></div>
+                    <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2653EB] bg-[#2563EB]"></div>
                 </button>
             </div>
         </div>
@@ -25,7 +25,7 @@
         <a href="/profile" class="text-gray-700 block px-4 py-2 text-sm cursor-default focus:bg-[#F1F5F9] focus:text-[#0F172A] hover:bg-[#F1F5F9] hover:text-[#0F172A] transition-colors" role="menuitem" tabindex="-1" id="menu-item-2">
             Profile
         </a>
-        <a href="/takeattendance" class="text-gray-700 block px-4 py-2 text-sm cursor-default focus:bg-[#F1F5F9] focus:text-[#0F172A] hover:bg-[#F1F5F9] hover:text-[#0F172A] transition-colors" role="menuitem" tabindex="-1" id="menu-item-3">
+        <a href="/attendance" class="text-gray-700 block px-4 py-2 text-sm cursor-default focus:bg-[#F1F5F9] focus:text-[#0F172A] hover:bg-[#F1F5F9] hover:text-[#0F172A] transition-colors" role="menuitem" tabindex="-1" id="menu-item-3">
             Attendance
         </a>
     </div>
