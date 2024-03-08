@@ -59,9 +59,3 @@ Route::get('/report', function() {
     ]);
 });
 
-Route::get('/takeattendance', function () {
-    return view('page.auth.attendance.takeattendance', [
-        'title'=> 'Checkin',
-        'group' => 'attendance'
-    ]);
-});

@@ -25,7 +25,7 @@
         <a href="/profile" class="text-gray-700 block px-4 py-2 text-sm cursor-default focus:bg-[#F1F5F9] focus:text-[#0F172A] hover:bg-[#F1F5F9] hover:text-[#0F172A] transition-colors" role="menuitem" tabindex="-1" id="menu-item-2">
             Profile
         </a>
-        <a href="#" class="text-gray-700 block px-4 py-2 text-sm cursor-default focus:bg-[#F1F5F9] focus:text-[#0F172A] hover:bg-[#F1F5F9] hover:text-[#0F172A] transition-colors" role="menuitem" tabindex="-1" id="menu-item-3">
+        <a href="/takeattendance" class="text-gray-700 block px-4 py-2 text-sm cursor-default focus:bg-[#F1F5F9] focus:text-[#0F172A] hover:bg-[#F1F5F9] hover:text-[#0F172A] transition-colors" role="menuitem" tabindex="-1" id="menu-item-3">
             Attendance
         </a>
     </div>
