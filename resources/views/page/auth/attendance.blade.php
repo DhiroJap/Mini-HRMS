@@ -451,6 +451,9 @@
 
 
     document.addEventListener("click", (event) => {
+        if (!isInside(event.target, time_1) && !isInside(event.target, schedule_1)) {
+            close();
+        }
         if (event.target === time_1 && !time_1.contains(event.target)) {
             close();
         }
