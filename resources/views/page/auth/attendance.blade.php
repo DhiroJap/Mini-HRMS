@@ -233,20 +233,36 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
+                                            @php
+                                                $total_month_hour = 0;
+                                            @endphp
+                                            @foreach ($reports as $report)
+                                                @if ($loop->iteration <= 30)
+                                                    <tr class="divide-x divide-[#6A6A6A]">
+                                                        <td class="px-6 py-4">{{ $loop->iteration }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $report->date)->format('l, j F Y') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $report->check_in)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $report->check_out)->format('h:i:s A') }}</td>
+                                                        @php
+                                                            $check_out = DateTIme::createFromFormat('H:i:s', $report->check_out);
+                                                            $check_in = DateTIme::createFromFormat('H:i:s', $report->check_in);
+                                                            $total_hours = $check_out->diff($check_in)->h;
+                                                            if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
+                                                                $total_hours -= 1;
+                                                            }
+                                                            $total_month_hour += $total_hours;
+                                                        @endphp
+                                                        <td class="px-6 py-4">{{ $total_hours }} Hours</td>
+                                                    </tr>
+                                                @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#EF4444]">56 Hours</span></p>
+                    <p class="font-medium">Total Monthly Work Hours : <span class="{{ $total_month_hour >= 80 ? "text-[#2563EB]" : "text-[#EF4444]"}}">{{ $total_month_hour }} Hours</span></p>
                 </div>
             </div>
         </div>
