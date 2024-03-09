@@ -17,8 +17,8 @@ class AttendanceFactory extends Factory
     public function definition(): array
     {
         return [
-            'check_in' => $this->faker->time('H:i:s'),
-            'check_out' => $this->faker->time('H:i:s'),
+            'check_in' => $this->faker->dateTime(),
+            'check_out' => $this->faker->dateTime(),
             'date' => $this->faker->date('Y_m_d'),
             'user_id'=> mt_rand(1, 10),
         ];

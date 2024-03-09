@@ -136,7 +136,7 @@
     
                 <div class="">
                     <h3 class="text-md font-medium">Current Date</h3>
-                    <p class="text-sm text-[#595960]">Today is {{ date("l, d F Y. h:i A") }}</p>
+                    <p class="text-sm text-[#595960]" id="current-time">Today is {{ date("l, d F Y. h:i:s A") }}</p>
                 </div>
 
                 <div class="">
@@ -178,11 +178,11 @@
                                                     <tr class="divide-x divide-[#6A6A6A]">
                                                         <td class="px-6 py-4">{{ $loop->iteration }}</td>
                                                         <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $attendance->date)->format('l, j F Y') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_in)->format('h:i:s A') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_out)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_in)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_out)->format('h:i:s A') }}</td>
                                                         @php
-                                                            $check_out = DateTIme::createFromFormat('H:i:s', $attendance->check_out);
-                                                            $check_in = DateTIme::createFromFormat('H:i:s', $attendance->check_in);
+                                                            $check_out = Carbon\Carbon::parse($attendance->check_out);
+                                                            $check_in = Carbon\Carbon::parse($attendance->check_in);
                                                             $total_hours = $check_out->diff($check_in)->h;
                                                             if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
                                                                 $total_hours -= 1;
@@ -241,11 +241,11 @@
                                                     <tr class="divide-x divide-[#6A6A6A]">
                                                         <td class="px-6 py-4">{{ $loop->iteration }}</td>
                                                         <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $attendance->date)->format('l, j F Y') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_in)->format('h:i:s A') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_out)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_in)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_out)->format('h:i:s A') }}</td>
                                                         @php
-                                                            $check_out = DateTIme::createFromFormat('H:i:s', $attendance->check_out);
-                                                            $check_in = DateTIme::createFromFormat('H:i:s', $attendance->check_in);
+                                                            $check_out = Carbon\Carbon::parse($attendance->check_out);
+                                                            $check_in = Carbon\Carbon::parse($attendance->check_in);
                                                             $total_hours = $check_out->diff($check_in)->h;
                                                             if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
                                                                 $total_hours -= 1;
@@ -425,5 +425,25 @@
         }
     });
 
+    // Updating Day and Time
+    function updateTime() {
+        const element = document.getElementById("current-time");
+        const now = new Date();
+        const formattedTime = now.toLocaleString("en-ID", {
+            weekday: 'long',
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+            hour: 'numeric',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: true,
+        });
+        element.textContent = `Today is ${formattedTime}`;
+    }
+
+    updateTime();
+
+    setInterval(updateTime, 1000);
 </script>
 @endsection

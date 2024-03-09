@@ -39,7 +39,8 @@ class AttendanceController extends Controller
         return view("page.auth.attendance", [
             "title"=> "Attendance",
             "group" => "attendance",
-            "attendances" => $attendance::latest()->get(),
+            // Nanti diganti pake id auth user
+            "attendances" => $attendance::where('user_id', 9)->get(),
         ]);
     }
 

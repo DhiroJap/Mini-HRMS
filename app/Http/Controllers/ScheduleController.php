@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use DateTime;
-use Carbon\Carbon;
-use App\Models\Report;
+use App\Models\Schedule;
 use Illuminate\Http\Request;
 
-class ReportController extends Controller
+class ScheduleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,19 +34,15 @@ class ReportController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Report $report)
+    public function show(Schedule $schedule)
     {
-        return view("page.auth.attendance", [
-            "title"=> "Attendance",
-            "group" => "attendance",
-            "reports" => $report::latest()->get(),
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Report $report)
+    public function edit(Schedule $schedule)
     {
         //
     }
@@ -56,7 +50,7 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Report $report)
+    public function update(Request $request, Schedule $schedule)
     {
         //
     }
@@ -64,7 +58,7 @@ class ReportController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Report $report)
+    public function destroy(Schedule $schedule)
     {
         //
     }
