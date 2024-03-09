@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\AttendanceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,4 @@ Route::get('/profile', function() {
     ]);
 });
 
-Route::get('/attendance', [ReportController::class, "show"]);
+Route::get('/attendance', [AttendanceController::class, "show"]);

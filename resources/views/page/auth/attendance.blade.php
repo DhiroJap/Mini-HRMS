@@ -173,16 +173,16 @@
                                             @php
                                                 $total_week_hour = 0;
                                             @endphp
-                                            @foreach ($reports as $report)
+                                            @foreach ($attendances as $attendance)
                                                 @if ($loop->iteration <= 7)
                                                     <tr class="divide-x divide-[#6A6A6A]">
                                                         <td class="px-6 py-4">{{ $loop->iteration }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $report->date)->format('l, j F Y') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $report->check_in)->format('h:i:s A') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $report->check_out)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $attendance->date)->format('l, j F Y') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_in)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_out)->format('h:i:s A') }}</td>
                                                         @php
-                                                            $check_out = DateTIme::createFromFormat('H:i:s', $report->check_out);
-                                                            $check_in = DateTIme::createFromFormat('H:i:s', $report->check_in);
+                                                            $check_out = DateTIme::createFromFormat('H:i:s', $attendance->check_out);
+                                                            $check_in = DateTIme::createFromFormat('H:i:s', $attendance->check_in);
                                                             $total_hours = $check_out->diff($check_in)->h;
                                                             if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
                                                                 $total_hours -= 1;
@@ -236,16 +236,16 @@
                                             @php
                                                 $total_month_hour = 0;
                                             @endphp
-                                            @foreach ($reports as $report)
+                                            @foreach ($attendances as $attendance)
                                                 @if ($loop->iteration <= 30)
                                                     <tr class="divide-x divide-[#6A6A6A]">
                                                         <td class="px-6 py-4">{{ $loop->iteration }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $report->date)->format('l, j F Y') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $report->check_in)->format('h:i:s A') }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $report->check_out)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $attendance->date)->format('l, j F Y') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_in)->format('h:i:s A') }}</td>
+                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('H:i:s', $attendance->check_out)->format('h:i:s A') }}</td>
                                                         @php
-                                                            $check_out = DateTIme::createFromFormat('H:i:s', $report->check_out);
-                                                            $check_in = DateTIme::createFromFormat('H:i:s', $report->check_in);
+                                                            $check_out = DateTIme::createFromFormat('H:i:s', $attendance->check_out);
+                                                            $check_in = DateTIme::createFromFormat('H:i:s', $attendance->check_in);
                                                             $total_hours = $check_out->diff($check_in)->h;
                                                             if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
                                                                 $total_hours -= 1;
