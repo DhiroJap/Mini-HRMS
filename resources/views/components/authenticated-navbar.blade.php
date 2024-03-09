@@ -5,7 +5,7 @@
 
             <div class="hidden items-center space-x-4 sm:flex">
                 <p>Welcome, <span class="text-[#009ADB]">Dhiro Jap</span></p>
-                
+
                 <button id="menu-button">
                     <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2653EB] bg-[#2563EB]"></div>
                 </button>
@@ -14,7 +14,7 @@
     </div>
 </nav>
 
-<div class="absolute right-[5rem] z-10 mt-2 w-56 origin-top-right divide-y-2 divide-[#E2E8F0] rounded-md bg-white focus:outline-none hidden border-2 border-[#E2E8F0]" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" id="menu-item" tabindex="-1">
+<div class="absolute md:right-[5rem] lg:right-[25rem] z-10 mt-2 w-56 origin-top-right divide-y-2 divide-[#E2E8F0] rounded-md bg-white focus:outline-none hidden border-2 border-[#E2E8F0]" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" id="menu-item" tabindex="-1">
     <div class="py-1" role="none">
         <div class="block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">
             <p class="text-black">Dhiro Jap</p>
