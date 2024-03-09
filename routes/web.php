@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,9 +39,4 @@ Route::get('/profile', function() {
     ]);
 });
 
-Route::get('/attendance', function () {
-    return view('page.auth.attendance', [
-        'title'=> 'Attendance',
-        'group' => 'attendance'
-    ]);
-});
+Route::get('/attendance', [ReportController::class, "show"]);
