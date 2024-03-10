@@ -3,18 +3,20 @@
 @section('content')
 <div class="flex flex-col min-h-screen items-center justify-center lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-lg">
-        <form id="login-form" class="space-y-2">
+        <form id="login-form" class="space-y-2" method="POST" action="/login">
             @csrf
             <div class="border-solid border-gray-300 border-2 rounded-lg">
                 <label for="email" class="block text-sm font-normal leading-6 text-gray-400 px-2">Email Address</label>
                 <div class="my-1">
-                    <input id="email" name="email" type="text" autocomplete="off" class="block w-full border-none py-1 text-gray-900 shadow-sm placeholder:text-gray-400 focus:outline-none sm:text-md sm:leading-6 px-2">
+                    <input id="login-email" name="email" type="text" autocomplete="off" class="block w-full border-none py-1 text-gray-900 shadow-sm placeholder:text-gray-400 focus:outline-none sm:text-md sm:leading-6 px-2">
+                    <p id="login-email-error" class="text-sm font-medium text-red-600 px-2"></p>
                 </div>
             </div>
             <div class="border-solid border-gray-300 border-2 rounded-lg">
                 <label for="password" class="block text-sm font-normal leading-6 text-gray-400 px-2">Password</label>
                 <div class="my-1">
-                    <input id="password" name="password" type="password" autocomplete="off" class="block w-full border-none py-1 text-gray-900 shadow-sm placeholder:text-gray-400 focus:outline-none sm:text-md sm:leading-6 px-2">
+                    <input id="login-password" name="password" type="password" autocomplete="off" class="block w-full border-none py-1 text-gray-900 shadow-sm placeholder:text-gray-400 focus:outline-none sm:text-md sm:leading-6 px-2">
+                    <p id="login-password-error" class="text-sm font-medium text-red-600 px-2"></p>
                 </div>
             </div>
             <div>

@@ -1,46 +1,34 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
-
 Route::get('/', function () {
-    return view('page.login', [
-        'title'=> 'Welcome',
-    ]);
+    return redirect('/login');
 });
 
-Route::get('/login', function () {
-    return view('page.login', [
-        'title'=> 'Welcome',
-    ]);
+Route::group(['middleware' => 'web'], function () {
+    Route::middleware('guest')->group(function () {
+        Route::get('/login', [AuthController::class,'viewLogin']);
+        Route::post('/login', [AuthController::class,'login']);
+        Route::get('/register', [AuthController::class,'viewRegister']);
+        Route::post('/register', [AuthController::class, 'register']);
+    });
+
+    Route::middleware('auth')->group(function () {
+        Route::get('/profile',[ProfileController::class, 'edit']);
+
+        Route::get('/attendance', function () {
+            return view('page.auth.attendance', [
+                'title' => 'Attendance',
+                'group' => 'attendance'
+            ]);
+        });
+
+        
+    });
 });
 
-Route::get('/register', function () {
-    return view('page.register', [
-        'title'=> 'Register',
-    ]);
-});
-
-Route::get('/profile', function() {
-    return view('page.auth.profile', [
-        'title' => 'Profile',
-        'group' => 'profile',
-    ]);
-});
-
-Route::get('/attendance', function () {
-    return view('page.auth.attendance', [
-        'title'=> 'Attendance',
-        'group' => 'attendance'
-    ]);
-});
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

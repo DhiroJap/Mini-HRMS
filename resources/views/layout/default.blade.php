@@ -6,13 +6,14 @@
 
         <title>{{ $title }}</title>
         
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/login.js', 'resources/js/register.js'])
         
     </head>
     <body class="min-h-screen font-sans antialiased">
-        <!-- <livewire:toasts /> -->
-        <div>@include('components.authenticated-navbar')</div>
+        <livewire:toasts />
+        <div>@include('components.navbar')</div>
+
         @yield('content')
-        <!-- @livewireScriptConfig -->
+        @livewireScriptConfig
     </body>
 </html>

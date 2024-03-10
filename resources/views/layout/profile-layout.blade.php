@@ -6,16 +6,17 @@
 
         <title>{{ $title }}</title>
         
-        @vite(['resources/css/app.css', 'resources/js/attendance/structure.js', 'resources/js/attendance/take-attendance.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/profile/structure.js', 'resources/js/profile/edit-profile.js'])
         
     </head>
     <body class="min-h-screen font-sans antialiased">
+    <livewire:toasts />
         <div>@include('components.authenticated-navbar')</div>
         
         <div class="hidden space-y-6 p-10 pb-16 md:block">
     <div class="space-y-0.5">
-        <h2 class="text-2xl font-bold tracking-tight">Attendance</h2>
-        <p class="text-[#595960]">Manage your work schedule and attendance here.</p>
+        <h2 class="text-2xl font-bold tracking-tight">Profile</h2>
+        <p class="text-[#595960]">Manage your account settings here.</p>
     </div>
 
     <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full my-6"></div>
@@ -26,6 +27,8 @@
         </aside>
 
         @yield('content')
+        
     </div>
+    @livewireScriptConfig
     </body>
 </html>
