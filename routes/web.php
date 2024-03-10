@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
+use Tests\Fixtures\Controller;
+use Illuminate\Support\Facades\Route; 
+use App\Http\Controllers\attendanceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,3 +45,6 @@ Route::get('/attendance', function () {
         'group' => 'attendance'
     ]);
 });
+
+// Route::post('/attendance', [attendanceController::class,'checkIn']);
+Route::get('/attendance', [attendanceController::class, 'getAttend']);

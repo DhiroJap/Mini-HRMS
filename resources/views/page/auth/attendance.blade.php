@@ -4,7 +4,7 @@
         <div id="take-attendance-content" class="flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div>
-                    <h3 class="text-lg font-medium">Take attandance</h3>
+                    <h3 class="text-lg font-medium">Take attandance</h3></div>
                     <p class="text-sm text-[#595960]">This is where you verify your attendance.</p>
                 </div>
                 
@@ -16,8 +16,20 @@
                         <p id="current-hour" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center">  </p>
                         <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"> </p>
                     </div>
-                    <button id="checkin" type="submit" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check in</button>
-                </div>
+                    <form action="/attendance" id="attendanceForm">
+                        @csrf
+                        <input type="hidden" id="currentTime" name="check_in">
+                        <input type="hidden" id="currentDate" name="date">
+                        <button onclick="currTime()" id="checkin" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check in</button>
+                        
+                    </form>  
+                    <form action="/attendance" id="attendanceForm">
+                        @csrf
+                        <input type="hidden" id="attId" name="attendance_id">
+                        <input type="hidden" id="currentCheckOut" name="check_out">
+                        <button onclick="currOut()" id="checkout" class="hidden flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check out</button>
+                    </form>
+                
             </div>
         </div>
 
@@ -220,11 +232,109 @@
         </div>
 
 <script>
+
+    const reports = {!! json_encode($reports) !!};
+    console.log(reports);
+    if(reports['check_in'] === reports['check_out'])
+    {
+        const checkInBtn = document.getElementById("checkin");
+        const checkOutBtn = document.getElementById("checkout");
+    
+        checkInBtn.classList.add("hidden");
+        checkOutBtn.classList.remove("hidden");   
+    }
+
+    // const checkOutBtn = document.getElementById('checkout');
+    // checkOutBtn.addEventListener('click', checkOut);
+
+    // function checkOut()
+    // {
+    //     var d = new Date();
+    //     var timeValue = d.toLocaleTimeString();
+    // }
+
+// function currTime() {
+//     // Get the current date and time
+//     var d = new Date();
+//     var timeValue = d.toLocaleTimeString(); // Get current time
+//     var monthList = [
+//         "January", "February", "March", "April", "May", "June",
+//         "July", "August", "September", "October", "November", "December"
+//     ];
+//     var month = monthList[d.getMonth()];
+//     var year = d.getFullYear();
+//     var day = d.getDate();
+//     var dateValue = year + "-" + month + "-" + day; // Get current date
+
+//     // Set the values to the hidden input fields
+//     document.getElementById("currentTime").value = timeValue;
+//     document.getElementById("currentDate").value = dateValue;
+//     // const checkInBtn = document.getElementById("checkin");
+//     // const checkOutBtn = document.getElementById("checkout");
+    
+//     // checkInBtn.classList.add("hidden");
+//     // checkOutBtn.classList.remove("hidden");
+
+//     // Submit the form
+//     document.getElementById("attendanceForm").submit();
+//     // event.preventdefault();  
+// }
+
+
+
+const checkInBtn = document.getElementById('checkin');
+checkInBtn.addEventListener('click', checkIn);
+
+function checkIn() {
+    var d = new Date();
+    var timeValue = d.toLocaleTimeString();
+    var monthList = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ];
+    var month = monthList[d.getMonth()];
+    var year = d.getFullYear();
+    var day = d.getDate();
+    var dateValue = year + "-" + month + "-" + day;
+    document.getElementById("currentTime").value = timeValue;
+    document.getElementById("currentDate").value = dateValue;
+
+    axios.post('http://127.0.0.1:8000/api/attendance/checkin', {
+        check_in: timeValue,
+        check_out: timeValue,
+        date : dateValue
+        }, {
+            headers : {
+                'Content-Type' : 'application/json'
+            }
+        })
+    .then(response => {
+        // Handle response if needed
+        console.log(response.data);
+    })
+    .catch(error => {
+        // Handle error if needed
+        console.error(error);
+    });
+}
+
+function currOut()
+{
+    var d = new Date();
+    var timeValue = d.toLocaleTimeString();
+    document.getElementById("attId").value = reports['attendance_id'];
+    document.getElementById("currentCheckOut").value = timeValue;
+    axios.post('http://127.0.0.1:8000/api/attendance/checkout', {
+        attendance_id: reports['attendance_id'],
+        check_out: timeValue
+    })
+}
+
+
   window.addEventListener("load", () => {
   clock();
   function clock() {
     const today = new Date();
-
 
     const hours = today.getHours();
     const minutes = today.getMinutes();
@@ -266,7 +376,7 @@
     setTimeout(clock, 1000);
   }
 });
-
+    
     const btn = document.getElementById('checkin');
 
     btn.addEventListener('click', function handleClick() {
