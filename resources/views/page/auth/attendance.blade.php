@@ -169,37 +169,15 @@
                                                 
                                             </tr>
                                         </thead>
-                                        <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                            @php
-                                                $total_week_hour = 0;
-                                            @endphp
-                                            @foreach ($attendances as $attendance)
-                                                @if ($loop->iteration <= 7)
-                                                    <tr class="divide-x divide-[#6A6A6A]">
-                                                        <td class="px-6 py-4">{{ $loop->iteration }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $attendance->date)->format('l, j F Y') }}</td>
-                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_in)->format('h:i:s A') }}</td>
-                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_out)->format('h:i:s A') }}</td>
-                                                        @php
-                                                            $check_out = Carbon\Carbon::parse($attendance->check_out);
-                                                            $check_in = Carbon\Carbon::parse($attendance->check_in);
-                                                            $total_hours = $check_out->diff($check_in)->h;
-                                                            if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
-                                                                $total_hours -= 1;
-                                                            }
-                                                            $total_week_hour += $total_hours;
-                                                        @endphp
-                                                        <td class="px-6 py-4">{{ $total_hours }} Hours</td>
-                                                    </tr>
-                                                @endif
-                                            @endforeach
+                                        <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]" id="weekly-row">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium">Total Weekly Work Hours : <span class="{{ $total_week_hour >= 20 ? "text-[#2563EB]" : "text-[#EF4444]"}}">{{ $total_week_hour }} Hours</span></p>
+                    <p class="font-medium" id="total-weekly"></p>
                 </div>
 
                 <div class="">
@@ -232,37 +210,15 @@
                                                 
                                             </tr>
                                         </thead>
-                                        <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                            @php
-                                                $total_month_hour = 0;
-                                            @endphp
-                                            @foreach ($attendances as $attendance)
-                                                @if ($loop->iteration <= 30)
-                                                    <tr class="divide-x divide-[#6A6A6A]">
-                                                        <td class="px-6 py-4">{{ $loop->iteration }}</td>
-                                                        <td class="px-6 py-4">{{ DateTime::createFromFormat('Y-m-d', $attendance->date)->format('l, j F Y') }}</td>
-                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_in)->format('h:i:s A') }}</td>
-                                                        <td class="px-6 py-4">{{ Carbon\Carbon::parse($attendance->check_out)->format('h:i:s A') }}</td>
-                                                        @php
-                                                            $check_out = Carbon\Carbon::parse($attendance->check_out);
-                                                            $check_in = Carbon\Carbon::parse($attendance->check_in);
-                                                            $total_hours = $check_out->diff($check_in)->h;
-                                                            if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
-                                                                $total_hours -= 1;
-                                                            }
-                                                            $total_month_hour += $total_hours;
-                                                        @endphp
-                                                        <td class="px-6 py-4">{{ $total_hours }} Hours</td>
-                                                    </tr>
-                                                @endif
-                                            @endforeach
+                                        <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]" id="monthly-row">
+                                            
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium">Total Monthly Work Hours : <span class="{{ $total_month_hour >= 80 ? "text-[#2563EB]" : "text-[#EF4444]"}}">{{ $total_month_hour }} Hours</span></p>
+                    <p class="font-medium" id="total-monthly"></p>
                 </div>
             </div>
         </div>

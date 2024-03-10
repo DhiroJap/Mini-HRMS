@@ -40,4 +40,4 @@ Route::get('/profile', function() {
     ]);
 });
 
-Route::get('/attendance', [AttendanceController::class, "show"]);
+Route::get('/attendance', [AttendanceController::class, "index"]);

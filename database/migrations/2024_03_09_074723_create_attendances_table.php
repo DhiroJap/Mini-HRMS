@@ -12,8 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('attendances', function (Blueprint $table) {
-            $table->id()->unique();
-            $table->foreignId('user_id');
+            $table->id();
+            $table->foreignUuid('user_id')->references('user_id')->on('users');
             $table->dateTime('check_in');
             $table->dateTime('check_out');
             $table->date('date');

@@ -191,3 +191,99 @@ document.addEventListener("DOMContentLoaded", function () {
 
     editProfileButton.classList.add("bg-[#F1F5F9]", "hover:bg-[#F1F5F9]");
 });
+
+// Fetch data for Report page
+async function getAttendanceData() {
+    // Weekly - fetch
+    try {
+        const url = `http://127.0.0.1:8000/api/attendance/getAttendanceWeek`;
+
+        const res = await axios.get(url);
+
+        if(res.status == 200) {
+            const retrieved_data = res.data.data;
+            let total_week_hour = 0;
+            for(let i = 0; i < retrieved_data.length; i++) {
+                const row_data = retrieved_data[i];
+
+                total_week_hour += row_data.total_hour;
+                                            
+                const content_row = `
+                    <tr class="divide-x divide-[#6A6A6A]">
+                        <td class="px-6 py-4">${i + 1}</td>
+                        <td class="px-6 py-4">${row_data.date}</td>
+                        <td class="px-6 py-4">${row_data.check_in}</td>
+                        <td class="px-6 py-4">${row_data.check_out}</td>
+                        <td class="px-6 py-4">${row_data.total_hour}</td>   
+                    </tr>       
+                `;
+
+                document.querySelector("#weekly-row").insertAdjacentHTML('beforeend', content_row);
+
+            }
+
+            if(total_week_hour >= 20) {
+                document.querySelector("#total-weekly").innerHTML = `
+                    Total Weekly Work Hours : <span class="text-[#2563EB]">${total_week_hour} Hours</span>
+                `;
+            }
+            else {
+                document.querySelector("#total-weekly").innerHTML = `
+                    Total Weekly Work Hours : <span class="text-[#EF4444]">${total_week_hour} Hours</span>
+                `;
+            }
+        }
+        else {
+            console.error("Error: ", res.status);
+        }
+    } catch(error) {
+        console.error("Error: ", error);
+    }
+
+    // Monthly - fetch
+    try {
+        const url = `http://127.0.0.1:8000/api/attendance/getAttendanceMonth`;
+
+        const res = await axios.get(url);
+
+        if(res.status == 200) {
+            const retrieved_data = res.data.data;
+            let total_month_hour = 0;
+            for(let i = 0; i < retrieved_data.length; i++) {
+                const row_data = retrieved_data[i];
+
+                const content = `
+                    <tr class="divide-x divide-[#6A6A6A]">
+                        <td class="px-6 py-4">${i + 1}</td>
+                        <td class="px-6 py-4">${row_data.date}</td>
+                        <td class="px-6 py-4">${row_data.check_in}</td>
+                        <td class="px-6 py-4">${row_data.check_out}</td>
+                        <td class="px-6 py-4">${row_data.total_hour}</td>   
+                    </tr>       
+                `;
+
+                total_month_hour += row_data.total_hour;
+
+                document.querySelector("#monthly-row").insertAdjacentHTML('beforeend', content);
+            }
+
+            if(total_month_hour >= 80) {
+                document.querySelector("#total-monthly").innerHTML = `
+                    Total Weekly Work Hours : <span class="text-[#2563EB]">${total_month_hour} Hours</span>
+                `;
+            }
+            else {
+                document.querySelector("#total-monthly").innerHTML = `
+                    Total Monthly Work Hours : <span class="text-[#EF4444]">${total_month_hour} Hours</span>
+                `;
+            }
+        }
+        else {
+            console.error("Error: ", res.status);
+        }
+    } catch(error) {
+        console.error("Error: ", error);
+    }
+}
+
+getAttendanceData();

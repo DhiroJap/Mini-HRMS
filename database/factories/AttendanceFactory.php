@@ -19,8 +19,8 @@ class AttendanceFactory extends Factory
         return [
             'check_in' => $this->faker->dateTime(),
             'check_out' => $this->faker->dateTime(),
-            'date' => $this->faker->date('Y_m_d'),
-            'user_id'=> mt_rand(1, 10),
+            'date' => $this->faker->dateTimeThisMonth(),
+            'user_id'=> '30fe0460-259e-3cda-afe9-4e70d1c79839',
         ];
     }
 }
