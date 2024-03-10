@@ -1,6 +1,7 @@
 @extends('layout.attendance-layout')
 
 @section('content')
+        <!-- Take Attendance Section -->
         <div id="take-attendance-content" class="flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div>
@@ -21,6 +22,7 @@
             </div>
         </div>
 
+        <!-- Input Schedule Section -->
         <div id="input-schedule-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div class="">
@@ -122,6 +124,7 @@
 
         </div>
 
+        <!-- Report Section -->
         <div id="report-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div class="">
