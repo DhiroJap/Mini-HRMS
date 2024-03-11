@@ -51,57 +51,13 @@
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Monday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <button id="edit-schedule-1">
-                                                    <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" ><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Tuesday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-2"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Wednesday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-3"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Thursday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-4"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Friday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-5"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Saturday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-6"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Sunday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-7"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
+                                        <x-input-schedule-row day="Monday" time="00:00 AM - 00:00 AM (0 hr 0m)" btn_id="schedule-1" modal_id="modal-1" close_btn_id="btn-1" close_outside_id="outside-1"/>
+                                        <x-input-schedule-row day="Tuesday" time="00:00 AM - 00:00 AM (0 hr 0m)" btn_id="schedule-2" modal_id="modal-2" close_btn_id="btn-2" close_outside_id="outside-2"/>
+                                        <x-input-schedule-row day="Wednesday" time="00:00 AM - 00:00 AM (0 hr 0m)" btn_id="schedule-3" modal_id="modal-3" close_btn_id="btn-3" close_outside_id="outside-3"/>
+                                        <x-input-schedule-row day="Thursday" time="00:00 AM - 00:00 AM (0 hr 0m)" btn_id="schedule-4" modal_id="modal-4" close_btn_id="btn-4" close_outside_id="outside-4"/>
+                                        <x-input-schedule-row day="Friday" time="00:00 AM - 00:00 AM (0 hr 0m)" btn_id="schedule-5" modal_id="modal-5" close_btn_id="btn-5" close_outside_id="outside-5"/>
+                                        <x-input-schedule-row day="Saturday" time="00:00 AM - 00:00 AM (0 hr 0m)" btn_id="schedule-6" modal_id="modal-6" close_btn_id="btn-6" close_outside_id="outside-6"/>
+                                        <x-input-schedule-row day="Sunday" time="00:00 AM - 00:00 AM (0 hr 0m)" btn_id="schedule-7" modal_id="modal-7" close_btn_id="btn-7" close_outside_id="outside-7"/>
                                     </tbody>
                                 </table>
                             </div>
@@ -113,15 +69,6 @@
                     <button class="w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2  text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save time</button>
                 </div>                
             </div>
-            
-            <x-schedule-submit-popup id="edit-time-1" date="Monday" />
-            <x-schedule-submit-popup id="edit-time-2" date="Tuesday" />
-            <x-schedule-submit-popup id="edit-time-3" date="Wednesday" />
-            <x-schedule-submit-popup id="edit-time-4" date="Thursday" />
-            <x-schedule-submit-popup id="edit-time-5" date="Friday" />
-            <x-schedule-submit-popup id="edit-time-6" date="Saturday" />
-            <x-schedule-submit-popup id="edit-time-7" date="Sunday" />
-
         </div>
 
         <!-- Report Section -->
@@ -170,14 +117,16 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]" id="weekly-row">
-                                            
+                                            <!-- Placeholder -->
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium" id="total-weekly"></p>
+                    <p class="font-medium" id="total-weekly">
+                        <!-- Placeholder -->
+                    </p>
                 </div>
 
                 <div class="">
@@ -211,195 +160,17 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]" id="monthly-row">
-                                            
+                                            <!-- Placeholder -->
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium" id="total-monthly"></p>
+                    <p class="font-medium" id="total-monthly">
+                        <!-- Placeholder -->
+                    </p>
                 </div>
             </div>
         </div>
-
-<script>
-  window.addEventListener("load", () => {
-  clock();
-  function clock() {
-    const today = new Date();
-
-
-    const hours = today.getHours();
-    const minutes = today.getMinutes();
-
-    const hour = hours < 10 ? "0" + hours : hours;
-    const minute = minutes < 10 ? "0" + minutes : minutes;
-
-    const hourTime = hour > 24 ? hour - 24 : hour;
-
-    const ampm = hour < 12 ? "AM" : "PM";
-
-    const month = today.getMonth();
-    const year = today.getFullYear();
-    const day = today.getDate();
-    const currentDayOfWeek = today.getDay();
-    
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    
-    const monthList = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-
-    const date = daysOfWeek[currentDayOfWeek] + ", " + day + " " + monthList[month] + " " + year;
-
-    document.getElementById("current-date").innerHTML = date;
-    document.getElementById("current-hour").innerHTML = hourTime;
-    document.getElementById("current-minute").innerHTML = minute;
-    setTimeout(clock, 1000);
-  }
-});
-
-    const btn = document.getElementById('checkin');
-
-    btn.addEventListener('click', function handleClick() {
-      const initialText = 'Check In';
-
-      if (btn.textContent.toLowerCase().includes(initialText.toLowerCase())) {
-        btn.textContent = 'Check Out';
-      } 
-      else {
-        btn.textContent = initialText;
-      }
-    });
-
-    // Schedule Time Input Pop Up
-    const schedule_1 = document.querySelector("#edit-schedule-1");
-    const schedule_2 = document.querySelector("#edit-schedule-2");
-    const schedule_3 = document.querySelector("#edit-schedule-3");
-    const schedule_4 = document.querySelector("#edit-schedule-4");
-    const schedule_5 = document.querySelector("#edit-schedule-5");
-    const schedule_6 = document.querySelector("#edit-schedule-6");
-    const schedule_7 = document.querySelector("#edit-schedule-7");
-
-    const time_1 = document.querySelector("#edit-time-1");
-    const time_2 = document.querySelector("#edit-time-2");
-    const time_3 = document.querySelector("#edit-time-3");
-    const time_4 = document.querySelector("#edit-time-4");
-    const time_5 = document.querySelector("#edit-time-5");
-    const time_6 = document.querySelector("#edit-time-6");
-    const time_7 = document.querySelector("#edit-time-7");
-
-    schedule_1.addEventListener("click", () => {
-        time_1.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    });
-
-    schedule_2.addEventListener("click", () => {
-        time_2.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    });
-    
-    schedule_3.addEventListener("click", () => {
-        time_3.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    });
-
-    schedule_4.addEventListener("click", () => {
-        time_4.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    });
-
-    schedule_5.addEventListener("click", () => {
-        time_5.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    });
-
-    schedule_6.addEventListener("click", () => {
-        time_6.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    });
-
-    schedule_7.addEventListener("click", () => {
-        time_7.classList.remove("hidden");
-        document.body.style.overflow = "hidden";
-    });
-    
-    function close() {
-        time_1.classList.add("hidden");
-        time_2.classList.add("hidden");
-        time_3.classList.add("hidden");
-        time_4.classList.add("hidden");
-        time_5.classList.add("hidden");
-        time_6.classList.add("hidden");
-        time_7.classList.add("hidden");
-        document.body.style.overflow = "auto";
-    }
-
-    const closeBtn = document.querySelector("#close-btn");
-    closeBtn.addEventListener("click", () => {
-        close();
-    });
-
-
-
-    document.addEventListener("click", (event) => {
-        if (!isInside(event.target, time_1) && !isInside(event.target, schedule_1)) {
-            close();
-        }
-        if (event.target === time_1 && !time_1.contains(event.target)) {
-            close();
-        }
-        if (event.target === time_2 && !time_2.contains(event.target)) {
-            close();
-        }
-        if (event.target === time_3 && !time_3.contains(event.target)) {
-            close();
-        }
-        if (event.target === time_4 && !time_4.contains(event.target)) {
-            close();
-        }
-        if (event.target === time_5 && !time_5.contains(event.target)) {
-            close();
-        }
-        if (event.target === time_6 && !time_6.contains(event.target)) {
-            close();
-        }
-        if (event.target === time_7 && !time_7.contains(event.target)) {
-            close();
-        }
-    });
-
-    // Updating Day and Time
-    function updateTime() {
-        const element = document.getElementById("current-time");
-        const now = new Date();
-        const formattedTime = now.toLocaleString("en-ID", {
-            weekday: 'long',
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
-            hour: 'numeric',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true,
-        });
-        element.textContent = `Today is ${formattedTime}`;
-    }
-
-    updateTime();
-
-    setInterval(updateTime, 1000);
-</script>
 @endsection
