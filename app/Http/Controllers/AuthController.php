@@ -12,14 +12,14 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
 
-    public function viewRegister() 
+    public function viewRegister()
     {
         return view('page.register', [
             'title' => 'Register'
         ]);
     }
 
-    public function register(Request $request, Validator $validator) 
+    public function register(Request $request, Validator $validator)
     {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
@@ -45,7 +45,7 @@ class AuthController extends Controller
             return redirect()->back();
         }
 
-        $avatar = "default.jpg";
+        $avatar = "default.png";
 
         $newuser = new User();
         $newuser->user_id = Str::uuid();
@@ -61,7 +61,7 @@ class AuthController extends Controller
         return redirect('/login');
     }
 
-    public function viewLogin() 
+    public function viewLogin()
     {
         return view('page.login', [
             'title' => 'Login'
@@ -89,7 +89,7 @@ class AuthController extends Controller
         $cookie = cookie('auth_token', $token, config('sanctum.expiration'), null, null, false, true);
 
         if (!Hash::check($request->password, $user->password)) {
-            toast()->danger('Invalid password!')->pushOnNextPage();
+            toast()->danger('Incorrect password!')->pushOnNextPage();
             return redirect()->back()->withInput();
         }
 
@@ -102,8 +102,8 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        
+
         return redirect('/login')->withoutCookie('auth_token');
     }
-        
+
 }

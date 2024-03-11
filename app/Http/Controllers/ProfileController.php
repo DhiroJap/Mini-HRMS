@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -54,6 +56,40 @@ class ProfileController extends Controller
         };
 
         $user->save();
-        return redirect()->back()->with('success', 'Profile updated successfully!');
+        toast()->success('Profile updated successfully!')->pushOnNextPage();
+        return redirect()->back();
+    }
+
+    public function changePassword(Request $request, Validator $validator) {
+        $validator = Validator::make($request->all(), [
+            'newPassword' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/',
+            'currentPassword' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/',
+        ]);
+
+        if ($validator->fails()) {
+            toast()->danger($validator->errors())->pushOnNextPage();
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = auth()->user();
+        $currentPassword = $request->currentPassword;
+        $newPassword = $request->newPassword;
+
+        if ($currentPassword === $newPassword) {
+            toast()->danger('The new password must be different from your current password.')->pushOnNextPage();
+            return redirect()->back()->withInput();
+        }
+
+        if (!Hash::check($currentPassword, $user->password)) {
+            toast()->danger('Incorrect password!')->pushOnNextPage();
+            return redirect()->back()->withInput();
+        }
+
+        $user->password = bcrypt($request->newPassword);
+        $user->save();
+        toast()->success('Password changed successfully!')->pushOnNextPage();
+
+        return redirect()->back();
     }
 }
+

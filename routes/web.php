@@ -26,9 +26,9 @@ Route::group(['middleware' => 'web'], function () {
             ]);
         });
 
-        
+        Route::put('/profile', [ProfileController::class, 'update'])->name('updateProfile');
+        Route::put('/changepassword', [ProfileController::class, 'changePassword'])->name('changePassword');
     });
 });
 
-Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

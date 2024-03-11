@@ -153,4 +153,45 @@ document.addEventListener("DOMContentLoaded", function () {
 
         return errorMessages;
     }
+
+    const changePasswordButton = document.getElementById(
+        "change-password-form-button",
+    );
+    const confirmChangePasswordModal = document.getElementById(
+        "confirm-change-password-modal",
+    );
+    const cancelConfirmChangePasswordButton = document.getElementById(
+        "cancel-confirm-change-password",
+    );
+    const backgroundOverlay = document.getElementById("background-overlay");
+
+    changePasswordButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        const transferData = document.getElementById(
+            "new-password-input-transfer",
+        ).value;
+        document.getElementById("new-password-input-transferred").value =
+            transferData;
+        showModal();
+    });
+
+    cancelConfirmChangePasswordButton.addEventListener("click", function () {
+        closeModal();
+    });
+
+    backgroundOverlay.addEventListener("click", function (event) {
+        if (event.target === backgroundOverlay) {
+            closeModal();
+        }
+    });
+
+    function showModal() {
+        confirmChangePasswordModal.classList.remove("hidden");
+        document.body.classList.add("overflow-hidden");
+    }
+
+    function closeModal() {
+        confirmChangePasswordModal.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
+    }
 });
