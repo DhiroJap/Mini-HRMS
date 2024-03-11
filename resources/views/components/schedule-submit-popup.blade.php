@@ -1,4 +1,4 @@
-@props(['id', 'day', 'close_btn_id', 'close_outside_id'])
+@props(['id', 'day', 'close_btn_id', 'close_outside_id', 'form_submit', 'start', 'end', 'confirm'])
 
 <div class="hidden modal" id="{{ $id }}">
     <div class="left-0 top-0 fixed w-screen h-screen z-50">
@@ -19,21 +19,23 @@
                     <form>
                         @csrf
                         <div class="flex justify-center items-center p-4 md:p-5 md:mx-4">
+                            <div id="error"> </div>
                             <div class="flex justify-between w-full">
                                 <div class="flex-row w-full mr-4">
-                                    <label for="start-time" class="flex my-2 text-lg">From Hour</label>
-                                    <input type="time" id="start-time" class="rounded-lg border-2 border-[#6A6A6A] px-2 py-1 w-full">
+                                    <label for="{{ $start }}" class="flex my-2 text-lg">From Hour</label>
+                                    <input type="time" id="{{ $start }}" class="rounded-lg border-2 border-[#6A6A6A] px-2 py-1 w-full">
                                 </div>
                                 <div class="flex-row w-full ml-4">
-                                    <label for="end-time" class="flex my-2 text-lg">To Hour</label>
-                                    <input type="time" id="end-time" class="rounded-lg border-2 border-[#6A6A6A] px-2 py-1 w-full">
+                                    <label for="{{ $end }}" class="flex my-2 text-lg">To Hour</label>
+                                    <input type="time" id="{{ $end }}" class="rounded-lg border-2 border-[#6A6A6A] px-2 py-1 w-full">
                                 </div>
                             </div>
                         </div>
+                        <div id="{{ $form_submit }}"> </div>
                     </form>
                     <!-- Modal footer -->
                     <div class="flex items-center justify-end p-4 md:p-5 md:mx-4">
-                        <button class="px-2.5 py-1.5 bg-[#2563EB] text-white rounded-md mt-3 text-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Confirm</button>
+                        <button class="px-2.5 py-1.5 bg-[#2563EB] text-white rounded-md mt-3 text-xl hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" id="{{ $confirm }}">Confirm</button>
                     </div>
                 </div>
             </div>
