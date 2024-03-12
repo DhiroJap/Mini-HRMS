@@ -48,8 +48,8 @@
         <form action="{{route('changePassword')}}" method="POST" class="space-y-4" >
             @csrf
             @method('PUT')
-            <x-editprofile-input name="new_password" input_id='new-password-input-transfer' error_id='edit-password-error' desc="This will be your new account password." label="Password" id="password" autocomplete="off" type="password" />
-            <button id="change-password-form-button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#2563EB] text-[#F8FAFC] hover:bg-[#2563EB]/90 h-9 px-3">Update</button>
+            <x-editprofile-input name="new_password" input_id='change-password' error_id='change-password-error' desc="This will be your new account password." label="Password" id="password" autocomplete="off" type="password" />
+            <button id="change-password-form-button" class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-[#FFFFFF] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 bg-[#2563EB] text-[#F8FAFC] hover:bg-[#2563EB]/90 h-9 px-3 disabled:hover:bg-gray-400">Update</button>
         </form>
     </div>
 </div>

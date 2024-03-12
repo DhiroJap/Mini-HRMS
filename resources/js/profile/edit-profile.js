@@ -13,18 +13,65 @@ document.addEventListener("DOMContentLoaded", function () {
     const lastNameError = document.getElementById("edit-last-name-error");
     const avatarError = document.getElementById("edit-avatar-error");
 
-    editButton.disabled = true;
+    const changePasswordButton = document.getElementById(
+        "change-password-form-button",
+    );
+    const confirmChangePasswordModal = document.getElementById(
+        "confirm-change-password-modal",
+    );
+    const cancelConfirmChangePasswordButton = document.getElementById(
+        "cancel-confirm-change-password",
+    );
+    const backgroundOverlay = document.getElementById("background-overlay");
+    const changePasswordInput = document.getElementById("change-password");
+    const changePasswordError = document.getElementById(
+        "change-password-error",
+    );
+    const confirmChangePasswordInput = document.getElementById(
+        "confirm-change-password",
+    );
+    const confirmChangePasswordError = document.getElementById(
+        "confirm-change-password-error",
+    );
+    const confirmChangePasswordButton = document.getElementById(
+        "confirm-change-password-button",
+    );
 
-    if (editButton.disabled === true) {
-        editButton.classList.add("bg-gray-400", "cursor-not-allowed");
-    }
+    editButton.disabled = true;
+    confirmChangePasswordButton.disabled = true;
+    changePasswordButton.disabled = true;
+
+    setButtonDisabled(editButton, true);
+    setButtonDisabled(confirmChangePasswordButton, true);
+    setButtonDisabled(changePasswordButton, true);
 
     emailInput.addEventListener("input", validateForm);
     firstNameInput.addEventListener("input", validateForm);
     lastNameInput.addEventListener("input", validateForm);
     usernameInput.addEventListener("input", validateForm);
     avatarInput.addEventListener("input", validateForm);
-    editButton.addEventListener("click", attemptRegister);
+    editButton.addEventListener("click", attemptEditProfile);
+
+    confirmChangePasswordInput.addEventListener(
+        "input",
+        validateFormConfirmChangePassword,
+    );
+    confirmChangePasswordButton.addEventListener(
+        "click",
+        attemptConfirmChangePassword,
+    );
+
+    changePasswordInput.addEventListener("input", validateFormChangePassword);
+    changePasswordButton.addEventListener("click", attemptChangePassword);
+
+    function setButtonDisabled(button, disabled) {
+        button.disabled = disabled;
+        if (disabled) {
+            button.classList.add("bg-gray-400", "cursor-not-allowed");
+        } else {
+            button.classList.remove("bg-gray-400", "cursor-not-allowed");
+        }
+    }
 
     function validateForm() {
         if (
@@ -48,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    function attemptRegister(event) {
+    function attemptEditProfile(event) {
         const emailValid = validateEmail(emailInput.value);
         const firstNameValid = validateFirstName(firstNameInput.value);
         const lastNameValid = validateLastName(lastNameInput.value);
@@ -154,26 +201,130 @@ document.addEventListener("DOMContentLoaded", function () {
         return errorMessages;
     }
 
-    const changePasswordButton = document.getElementById(
-        "change-password-form-button",
-    );
-    const confirmChangePasswordModal = document.getElementById(
-        "confirm-change-password-modal",
-    );
-    const cancelConfirmChangePasswordButton = document.getElementById(
-        "cancel-confirm-change-password",
-    );
-    const backgroundOverlay = document.getElementById("background-overlay");
+    function validateFormConfirmChangePassword() {
+        if (confirmChangePasswordInput.value.trim() !== "") {
+            confirmChangePasswordButton.disabled = false;
+            confirmChangePasswordButton.classList.remove(
+                "bg-gray-400",
+                "cursor-not-allowed",
+            );
+            confirmChangePasswordError.textContent = "";
+        } else {
+            confirmChangePasswordButton.disabled = true;
+            confirmChangePasswordButton.classList.add(
+                "bg-gray-400",
+                "cursor-not-allowed",
+            );
+        }
+    }
 
-    changePasswordButton.addEventListener("click", function (event) {
+    function attemptConfirmChangePassword(event) {
+        const confirmChangePasswordValid = validateConfirmChangePassword(
+            confirmChangePasswordInput.value,
+        );
+
+        if (confirmChangePasswordValid.length === 0) {
+        } else {
+            event.preventDefault();
+            if (confirmChangePasswordValid.length !== 0) {
+                confirmChangePasswordError.textContent =
+                    "Password must contain at least " +
+                    confirmChangePasswordValid.join(", ");
+            }
+        }
+    }
+
+    function validateFormChangePassword() {
+        if (changePasswordInput.value.trim() !== "") {
+            changePasswordButton.disabled = false;
+            changePasswordButton.classList.remove(
+                "bg-gray-400",
+                "cursor-not-allowed",
+            );
+            changePasswordError.textContent = "";
+        } else {
+            changePasswordButton.disabled = true;
+            changePasswordButton.classList.add(
+                "bg-gray-400",
+                "cursor-not-allowed",
+            );
+        }
+    }
+
+    function attemptChangePassword(event) {
+        const changePasswordValid = validateChangePassword(
+            changePasswordInput.value,
+        );
         event.preventDefault();
-        const transferData = document.getElementById(
-            "new-password-input-transfer",
-        ).value;
-        document.getElementById("new-password-input-transferred").value =
-            transferData;
-        showModal();
-    });
+
+        if (changePasswordValid.length === 0) {
+            const transferData =
+                document.getElementById("change-password").value;
+            document.getElementById("new-password-input-transferred").value =
+                transferData;
+            showModal();
+        } else {
+            if (changePasswordValid.length !== 0) {
+                changePasswordError.textContent =
+                    "Password must contain at least " +
+                    changePasswordValid.join(", ");
+            }
+        }
+    }
+
+    function validateConfirmChangePassword(confirmPassword) {
+        const isLowerCaseMissing = !/(?=.*[a-z])/.test(confirmPassword);
+        const isUpperCaseMissing = !/(?=.*[A-Z])/.test(confirmPassword);
+        const isNumberMissing = !/(?=.*\d)/.test(confirmPassword);
+        const isSymbolMissing = !/(?=.*[!@#$%^&*])/.test(confirmPassword);
+
+        let errorMessages = [];
+
+        if (isLowerCaseMissing) {
+            errorMessages.push("one lowercase letter");
+        }
+
+        if (isUpperCaseMissing) {
+            errorMessages.push("one uppercase letter");
+        }
+
+        if (isNumberMissing) {
+            errorMessages.push("one number");
+        }
+
+        if (isSymbolMissing) {
+            errorMessages.push("one symbol");
+        }
+
+        return errorMessages;
+    }
+
+    function validateChangePassword(newPassword) {
+        const isLowerCaseMissing = !/(?=.*[a-z])/.test(newPassword);
+        const isUpperCaseMissing = !/(?=.*[A-Z])/.test(newPassword);
+        const isNumberMissing = !/(?=.*\d)/.test(newPassword);
+        const isSymbolMissing = !/(?=.*[!@#$%^&*])/.test(newPassword);
+
+        let errorMessages = [];
+
+        if (isLowerCaseMissing) {
+            errorMessages.push("one lowercase letter");
+        }
+
+        if (isUpperCaseMissing) {
+            errorMessages.push("one uppercase letter");
+        }
+
+        if (isNumberMissing) {
+            errorMessages.push("one number");
+        }
+
+        if (isSymbolMissing) {
+            errorMessages.push("one symbol");
+        }
+
+        return errorMessages;
+    }
 
     cancelConfirmChangePasswordButton.addEventListener("click", function () {
         closeModal();

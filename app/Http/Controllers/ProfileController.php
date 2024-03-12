@@ -66,22 +66,17 @@ class ProfileController extends Controller
             'currentPassword' => 'required|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{8,}$/',
         ]);
 
-        if ($validator->fails()) {
-            toast()->danger($validator->errors())->pushOnNextPage();
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
         $user = auth()->user();
         $currentPassword = $request->currentPassword;
         $newPassword = $request->newPassword;
 
-        if ($currentPassword === $newPassword) {
-            toast()->danger('The new password must be different from your current password.')->pushOnNextPage();
+        if (!Hash::check($currentPassword, $user->password)) {
+            toast()->danger('Incorrect password!')->pushOnNextPage();
             return redirect()->back()->withInput();
         }
 
-        if (!Hash::check($currentPassword, $user->password)) {
-            toast()->danger('Incorrect password!')->pushOnNextPage();
+        if ($currentPassword === $newPassword) {
+            toast()->danger('The new password must be different from your current password.')->pushOnNextPage();
             return redirect()->back()->withInput();
         }
 
