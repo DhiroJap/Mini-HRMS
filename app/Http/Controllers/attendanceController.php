@@ -32,7 +32,11 @@ class attendanceController extends Controller
         
         $newattendance->save();
 
-        return redirect()->back();
+        return response()->json([
+            'status' => 201,
+            'message' => 'Check in success',
+            'data' => null
+        ], 201);;
     }
 
     public function checkOut(Request $request)
@@ -43,7 +47,11 @@ class attendanceController extends Controller
         if ($checkout) {
             $checkout->check_out = $request->check_out; // Assuming you're hardcoding the checkout time for illustration
             $checkout->save();
-            return response()->json($checkout);
+            return response()->json([
+                'status' => 201,
+                'message' => 'Check in success',
+                'data' => null
+            ], 201);;
         } else {
             return response()->json(['error' => 'Attendance not found'], 404);
         }
