@@ -9,7 +9,7 @@
 
                 <button id="menu-button">
                     <div class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 bg-transparent">
-                        <img src="images/{{auth()->user()->avatar}}" alt="" class="absolute w-full h-auto object-cover rounded-full border-0">
+                        <img src="images/{{auth()->user()->avatar}}" alt="" class="w-full h-full object-cover rounded-full border-0">
                     </div>
                 </button>
             </div>

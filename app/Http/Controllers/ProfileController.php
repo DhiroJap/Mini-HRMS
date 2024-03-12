@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
@@ -18,7 +17,7 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function update(Request $request, Validator $validator) {
+    public function update(Request $request) {
         $validator = Validator::make($request->all(), [
             "username" => "regex:/^[a-z0-9]+$/|unique:users,username," . auth()->id(),
             "email" => "email|unique:users,email," . auth()->id(),

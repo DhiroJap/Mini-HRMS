@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function validateForm() {
         if (
-            emailInput.value.trim() !== "" &&
-            firstNameInput.value.trim() !== "" &&
-            lastNameInput.value.trim() !== "" &&
-            passwordInput.value.trim() !== "" &&
+            emailInput.value.trim() !== "" ||
+            firstNameInput.value.trim() !== "" ||
+            lastNameInput.value.trim() !== "" ||
+            passwordInput.value.trim() !== "" ||
             confirmPasswordInput.value.trim() !== ""
         ) {
             registerButton.disabled = false;

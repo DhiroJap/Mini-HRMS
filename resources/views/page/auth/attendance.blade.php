@@ -8,7 +8,7 @@
                     <h3 class="text-lg font-medium">Take Attendance</h3>
                     <p class="text-sm text-[#595960]">This is where you verify your attendance.</p>
                 </div>
-                
+
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
                 <div class="flex flex-col justify-center items-center">
@@ -17,7 +17,22 @@
                         <p id="current-hour" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center">  </p>
                         <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"> </p>
                     </div>
-                    <button id="checkin" type="submit" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check in</button>
+                    @if($status === 'not_checked_in')
+
+                    <form action="/check-in" method="POST">
+                    @csrf
+                    <button type="submit" id="check-in-button" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check In</button>
+                    </form>
+
+                    @else
+
+                    <form action="/check-out" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <button type="submit" id="check-out-button" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check Out</button>
+                    </form>
+
+                    @endif
                 </div>
             </div>
         </div>
@@ -111,9 +126,9 @@
                 <div class="flex items-center justify-end">
                     <p class="font-medium mx-4">Work Hours: <span class="text-[#EF4444]">6 Hours</span></p>
                     <button class="w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2  text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save time</button>
-                </div>                
+                </div>
             </div>
-            
+
             <x-schedule-submit-popup id="edit-time-1" date="Monday" />
             <x-schedule-submit-popup id="edit-time-2" date="Tuesday" />
             <x-schedule-submit-popup id="edit-time-3" date="Wednesday" />
@@ -131,9 +146,9 @@
                     <h3 class="text-lg font-medium">Report</h3>
                     <p class="text-sm text-[#595960]">This is where your weekly and monthly work report will be displayed.</p>
                 </div>
-    
+
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
-    
+
                 <div class="">
                     <h3 class="text-md font-medium">Current Date</h3>
                     <p class="text-sm text-[#595960]">Today is {{ date("l, d F Y. h:i A") }}</p>
@@ -142,7 +157,7 @@
                 <div class="">
                     <h3 class="text-md font-medium">Weekly Report</h3>
                     <p class="text-sm text-[#595960]">This is your work report for the last 7 days.</p>
-                    
+
                     <!-- Weekly Table -->
                     <div class="flex flex-col mt-4">
                         <div class="-m-1.5 overflow-x-auto">
@@ -166,38 +181,11 @@
                                                 <th scope="col" class="px-6 py-3">
                                                     Work Hours
                                                 </th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
+                                            {{-- Data here --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -210,7 +198,7 @@
                 <div class="">
                     <h3 class="text-md font-medium">Monthly Report</h3>
                     <p class="text-sm text-[#595960]">This is your work report for the last 30 days.</p>
-                    
+
                     <!-- Monthly Table -->
                     <div class="flex flex-col mt-4">
                         <div class="-m-1.5 overflow-x-auto">
@@ -234,87 +222,18 @@
                                                 <th scope="col" class="px-6 py-3">
                                                     Work Hours
                                                 </th>
-                                                
+
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
-                                            <tr class="divide-x divide-[#6A6A6A]">
-                                                <td class="px-6 py-4">1</td>
-                                                <td class="px-6 py-4">Wednesday, 6 March 2024</td>
-                                                <td class="px-6 py-4">09:53:40 AM </td>
-                                                <td class="px-6 py-4">15:06:40 PM</td>
-                                                <td class="px-6 py-4">5 Hours</td>
-                                            </tr>
+                                           {{-- Data Here --}}
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#EF4444]">56 Hours</span></p>
+                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#EF4444]">{{--Data Here--}}</span></p>
                 </div>
             </div>
         </div>

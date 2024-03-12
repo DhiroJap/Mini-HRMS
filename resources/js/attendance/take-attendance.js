@@ -1,3 +1,5 @@
+import axios from "axios";
+
 document.addEventListener("DOMContentLoaded", () => {
     clock();
     function clock() {
@@ -59,14 +61,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-const btn = document.getElementById("checkin");
-
-btn.addEventListener("click", function handleClick() {
-    const initialText = "Check In";
-
-    if (btn.textContent.toLowerCase().includes(initialText.toLowerCase())) {
-        btn.textContent = "Check Out";
-    } else {
-        btn.textContent = initialText;
-    }
-});
+const checkInButton = document.getElementById("check-in-button");

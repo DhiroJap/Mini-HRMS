@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function validateForm() {
         if (
-            emailInput.value.trim() !== "" &&
+            emailInput.value.trim() !== "" ||
             passwordInput.value.trim() !== ""
         ) {
             loginButton.disabled = false;
