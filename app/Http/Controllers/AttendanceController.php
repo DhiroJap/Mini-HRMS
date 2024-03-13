@@ -12,14 +12,16 @@ class AttendanceController extends Controller
      /**
      * Display a listing of the resource.
      */
+
+    // API for attendance last 30 day
+
     public function index() {
         return view("page.auth.attendance", [
-            'title' => 'Report',
+            'title' => 'Attendance',
             'group' => 'attendance',
         ]);
     }
 
-    // API for attendance last 30 day
     public function getAttendanceMonth(Request $request)
     {
         // Check if user is logged in or not
@@ -32,7 +34,7 @@ class AttendanceController extends Controller
         // }
 
         // $user_id = $request->user()->id;
-        $user_id = '30fe0460-259e-3cda-afe9-4e70d1c79839';
+        $user_id = '161d57d6-c6aa-3b05-a90a-3c57ff455dc0';
 
         $retrieved_data = Attendance::where("user_id", $user_id)
                             ->orderBy('date', 'desc')
@@ -79,7 +81,7 @@ class AttendanceController extends Controller
         // }
 
         // $user_id = $request->user()->id;
-        $user_id = '30fe0460-259e-3cda-afe9-4e70d1c79839';
+        $user_id = '161d57d6-c6aa-3b05-a90a-3c57ff455dc0';
         $retrieved_data = Attendance::where("user_id", $user_id)
                             ->orderBy('date', 'desc')
                             ->get();

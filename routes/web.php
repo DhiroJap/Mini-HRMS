@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AttendanceController;
 
 /*
@@ -41,3 +41,4 @@ Route::get('/profile', function() {
 });
 
 Route::get('/attendance', [AttendanceController::class, "index"]);
+Route::post('/attendance', [ScheduleController::class, "index"]);

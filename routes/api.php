@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\AttendanceController;
 
 /*
@@ -21,4 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('attendance/getAttendanceWeek', [AttendanceController::class, "getAttendanceWeek"]);
 Route::get('attendance/getAttendanceMonth', [AttendanceController::class, "getAttendanceMonth"]);
+Route::post('attendance/postSchedule', [ScheduleController::class, "postSchedule"]);
+Route::get('attendance/getSchedule', [ScheduleController::class, "getSchedule"]);
+Route::post('attendance/checkPassword', [ScheduleController::class, "checkPassword"]);
 

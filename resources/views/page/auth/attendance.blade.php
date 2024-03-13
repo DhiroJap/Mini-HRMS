@@ -32,7 +32,8 @@
 
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
-                <div class="flex flex-col mt-4">
+                <form class="flex flex-col mt-4" method="post">
+                    @csrf
                     <div class="-m-1.5 overflow-x-auto">
                         <div class="p-1.5 min-w-full inline-block align-middle">
                             <div class="border rounded-lg shadow overflow-hidden border-[#6A6A6A]">
@@ -63,14 +64,53 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="flex items-center justify-end">
-                    <p class="font-medium mx-4" id="total-work-hour">Work Hours: <span class="text-[#EF4444]" >0 Hours</span></p>
-                    <button class="w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2  text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save Schedule</button>
-                </div>                
+                    <div class="flex items-center justify-end mt-4" id="empty-error"> </div>
+                    <div class="flex items-center justify-end mt-4">
+                        <p class="font-medium mx-4" id="total-work-hour">Work Hours: <span class="text-[#EF4444]" >0 Hours</span></p>
+                        <button class="w-auto justify-center rounded-md font-semibold px-3 py-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 bg-gray-400 cursor-not-allowed" id="save-schedule" disabled>Save Schedule</button>
+                    </div>                
+                </form>
             </div>
         </div>
 
+        <!-- Warning Modal -->
+        <div class="hidden" id="warning-modal">
+            <div class="left-0 top-0 fixed w-screen h-screen z-50 bg-black bg-opacity-40 backdrop-blur-sm">
+                <div class="w-full h-full flex items-center justify-center z-10">
+                    <div class="relative p-4 w-full max-w-2xl">
+                        <div class="bg-white rounded-lg border-2 border-[#6A6A6A] py-4">
+                            <!-- Warning Modal header -->
+                            <div class="flex items-center justify-between px-4 py-2 md:px-5 md:py-3 md:mx-4">
+                                <button type="button" class="bg-transparent hover:bg-gray-200 rounded-full text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="default-modal" id="close-modal">
+                                    <svg stroke="currentColor" fill="black" stroke-width="2" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"></path></svg>
+                                </button>
+                            </div>
+                            <!-- Warning Modal body -->
+                            <div class="flex flex-col items-center justify-between px-4 py-2 md:px-5 md:py-3 md:mx-4">
+                                <svg stroke="#EF4444" fill="#EF4444" stroke-width="0" viewBox="0 0 256 256" height="150px" width="150px" xmlns="http://www.w3.org/2000/svg"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm-8-80V80a8,8,0,0,1,16,0v56a8,8,0,0,1-16,0Zm20,36a12,12,0,1,1-12-12A12,12,0,0,1,140,172Z"></path></svg>
+                                <p class="text-2xl font-medium mt-2">This action only take once, Are you sure?</p>
+                            </div>
+                            <!-- Warning Modal footer -->
+                            <form class=" px-4 py-2 md:px-5 md:py-3 md:mx-4" method="post">
+                                @csrf
+                                <div class="flex flex-col items-center justify-between px-4 py-2 md:px-5 md:py-3 md:mx-4">
+                                    <label for="check-password" class="font-medium text-lg">Current Password</label>
+                                    <input type="password" name="check-password" id="check-password" autocomplete="off" class="block w-full border-2 border-gray-300 rounded-md py-2 text-gray-900 shadow-sm placeholder:text-gray-400 focus:outline-none sm:text-md sm:leading-6 px-2 text-center focus:border-[#2563EB] mt-2">
+                                </div>
+                                <div class="flex items-center justify-around">
+                                    <div class="flex items-center justify-evenly w-full">
+                                        <button class="px-10 py-2.5 bg-gray-400 cursor-not-allowed text-white rounded-md mt-3 text-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600" id="yes" disabled>Yes</button>
+                                        <button class="px-10 py-2.5 bg-[#EF4444] text-white rounded-md mt-3 text-xl hover:bg-red-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600" id="no">No</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Schedule Modal -->
         <div class="hidden modal" id="day-modal">
             <div class="left-0 top-0 fixed w-screen h-screen z-50">
                 <div class="outside bg-black bg-opacity-40 backdrop-blur-sm h-full w-full absolute" id=""> </div>
@@ -87,7 +127,7 @@
                                 </button>
                             </div>
                             <!-- Modal body -->
-                            <form>
+                            <form method="post">
                                 @csrf
                                 <div class="flex justify-center items-center p-4 md:p-5 md:mx-4">
                                     <div class="flex justify-between w-full">
@@ -216,7 +256,6 @@
             </div>
         </div>
 
-<script src="https://unpkg.com/alpinejs"></script>
 <script>
     // Load Attendance Time
     window.addEventListener("load", () => {
@@ -300,13 +339,54 @@
     setInterval(updateTime, 1000);
 
     // Input Schedule Front End
-    let schedule = {};
+    // Default array for each day
+    let schedule = {
+        monday: {
+            day_day: `Monday`,
+            start: `00:00`,
+            end: `00:00`,
+            total_work: 0,
+        },
+        tuesday: {
+            day_day: `Tuesday`,
+            start: `00:00`,
+            end: `00:00`,
+            total_work: 0,
+        },
+        wednesday: {
+            day_day: `Wednesday`,
+            start: `00:00`,
+            end: `00:00`,
+            total_work: 0,
+        },
+        thursday: {
+            day_day: `Thursday`,
+            start: `00:00`,
+            end: `00:00`,
+            total_work: 0,
+        },
+        friday: {
+            day_day: `Friday`,
+            start: `00:00`,
+            end: `00:00`,
+            total_work: 0,
+        },
+        saturday: {
+            day_day: `Saturday`,
+            start: `00:00`,
+            end: `00:00`,
+            total_work: 0,
+        },
+        sunday: {
+            day_day: `Sunday`,
+            start: `00:00`,
+            end: `00:00`,
+            total_work: 0,
+        },
+    };
     
-    document.addEventListener("alpine:init", () => {
-        document.querySelectorAll("td[data-day]").forEach(td => {
-            td.innerHTML = `00:00 AM - 00:00 AM (0 hr 0m)`;
-        });
-
+    // Open Input Schedule Modal for each day
+    document.addEventListener("DOMContentLoaded", () => {
         let openModal = (day) => {
             document.getElementById("day-modal").classList.remove("hidden");
             document.body.style.overflow = "hidden";
@@ -344,17 +424,19 @@
             })
         });
 
+        // Close modal
         document.querySelector(".modal-close").addEventListener("click", () => {
             closeModal();
         });
+        // Close modal
         document.querySelector(".outside").addEventListener("click", () => {
             closeModal();
         });
-
-        
     });
 
+    // Confirm button for each day
     document.querySelector(".confirm").addEventListener("click", () => {
+        // Manually parsing the time
         const start_hour_minute = document.getElementById("start").value.split(":");
         const end_hour_minute = document.getElementById("end").value.split(":");
     
@@ -373,6 +455,7 @@
         end_time.setHours(end_hour);
         end_time.setMinutes(end_minute);
         
+        // Check if the input is empty or not
         if(document.getElementById("start").value !== "" && document.getElementById("end") !== "") {
             const [total_hour, total_minute, total_work] = subtractTime(start_time, end_time);
             if(start_hour >= end_hour) {
@@ -384,12 +467,16 @@
                 const day = document.getElementById('day').innerHTML.toLowerCase();
 
                 schedule[day] = {
+                    day_day: `${day.charAt(0).toUpperCase()}${day.slice(1)}`,
                     start: `${start_hour}:${start_minute}`,
                     end: `${end_hour}:${end_minute}`,
                     total_work: total_work,
                 };
                 
+                console.log(schedule[day]);
+
                 totalWorkHour();
+                saveButton();
                 closeModal();
                 
                 const targetTd = document.querySelector(`td[data-day="${day}"]`);
@@ -399,18 +486,42 @@
         else {
             document.querySelector("#error").innerHTML = `<p class="px-4 md:px-5 md:mx-4 text-[#EF4444]">Must input time</p>`;
         }
+
+        
     });
 
+    // Enabled the save button if condition met
+    function saveButton () {
+        total_work_hour = Math.floor(totalWorkHour() / 60);
+        const save_button = document.querySelector("#save-schedule");
+        
+        if(total_work_hour >= 20) {
+            save_button.removeAttribute("disabled");
+            save_button.classList.remove("bg-gray-400", "cursor-not-allowed");
+            save_button.classList.add("bg-blue-600", "hover:bg-blue-500");
+        }
+    };
+
+    // To get total time from schdeule array
     function totalWorkHour() {
         let total_minute = 0;
 
         for(const day in schedule) {
-            const{total_work} = schedule[day];
-            total_minute = total_minute + total_work;
+            const{ total_work } = schedule[day];
+            if(total_work) {
+                total_minute = total_minute + total_work;
+            }
         }
+        
+        calculateTotalHour(total_minute);
+        
+        return total_minute;
+    }
     
+    // To calculate total hour, then insert the value using innerHTML
+    function calculateTotalHour(total_minute) {
         let total_hour = Math.floor(total_minute / 60);
-        if(total_hour >= 20) {
+        if(total_hour >= 20 && Object.keys(schedule).length !== 0) {
             document.querySelector("#total-work-hour").innerHTML = `
                 Work Hours: <span class="text-[#2563EB]" >${total_hour} Hours
             `;
@@ -420,8 +531,8 @@
                 Work Hours: <span class="text-[#EF4444]" >${total_hour} Hours
             `;
         }
+
     }
-    
 
     function closeModal() {
         document.getElementById("day-modal").classList.add("hidden");
@@ -456,6 +567,74 @@
 
         return `${total_hour}:${total_minute} ${ampm}`;
     }
+    
+    document.querySelector("#save-schedule").addEventListener("click", (e) => {
+        e.preventDefault();
+        total_work_hour = Math.floor(totalWorkHour() / 60);
+
+        if(Object.keys(schedule).length === 0) {
+            document.querySelector("#empty-error").innerHTML = `
+                <p class="text-[#EF4444]">Must input a schedule</p>
+            `;
+        }
+        else if(total_work_hour < 20) {
+            document.querySelector("#empty-error").innerHTML = `
+                <p class="text-[#EF4444]">Minimum hour >= 20</p>
+            `;
+        }
+        else {
+            document.querySelector("#empty-error").innerHTML = ``;
+            document.querySelector("#warning-modal").classList.remove("hidden");
+            
+            document.querySelector("#close-modal").addEventListener("click", () => {
+                document.querySelector("#warning-modal").classList.add("hidden");
+            });
+            // masih error
+            document.querySelector("#check-password").addEventListener("input", async () => {
+                const password = document.querySelector("#check-password").value;
+                checkPassword(password);
+                
+            });
+
+            document.querySelector("#yes").addEventListener("click", (e) => {
+                // e.preventDefault();
+                document.querySelector("#warning-modal").classList.add("hidden");
+                postSchedule(schedule);
+            });
+    
+            document.querySelector("#no").addEventListener("click", (e) => {
+                e.preventDefault();
+                document.querySelector("#warning-modal").classList.add("hidden");
+            });
+        }
+
+    });
+
+    // Untuk POST schedule
+    async function postSchedule(schedule_convert) {
+        const url = `http://127.0.0.1:8000/api/attendance/postSchedule`;
+        const scheduleJSON = JSON.stringify(schedule_convert)
+        axios.post(url, scheduleJSON)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log("Error:", error);
+            });
+    };
+
+    async function checkPassword(check_password) {
+        const url = `http://127.0.0.1:8000/api/attendance/checkPassword`;
+        const passwordJSON = JSON.stringify(check_password);
+
+        axios.post(url, { check_password })
+            .then( res => {
+                console.log(res.data);
+            })
+            .catch(error => {
+                console.log("Error: ", error);
+            });
+    };
 
 </script>
 @endsection

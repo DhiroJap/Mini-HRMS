@@ -286,5 +286,52 @@ async function getAttendanceData() {
     }
 }
 
+// Fetsch data for Input Schedule Page
+async function getSchedule() {
+    try {
+        const url = `http://127.0.0.1:8000/api/attendance/getSchedule`;
+
+        const res = await axios.get(url);
+
+        if(res.status == 200) {
+            const retrieved_data = res.data.data;
+            let total_work = 0;
+            for(let i = 0; i < retrieved_data.length; i++) {
+                const row_data = retrieved_data[i];
+                
+                let hour = Math.floor(row_data.total_work / 60);
+                let minute = row_data.total_work % 60;
+
+                total_work = total_work + row_data.total_work;
+
+                document.querySelector(`td[data-day='${row_data.day.toLowerCase()}']`).innerHTML = `${row_data.start} - ${row_data.end} (${hour} hr ${minute}m)`;
+            }
+
+            let total_hour = Math.floor(total_work / 60);
+            if(total_hour >= 20 && Object.keys(schedule).length !== 0) {
+                document.querySelector("#total-work-hour").innerHTML = `
+                    Work Hours: <span class="text-[#2563EB]" >${total_hour} Hours
+                `;
+            }
+            else {
+                document.querySelector("#total-work-hour").innerHTML = `
+                    Work Hours: <span class="text-[#EF4444]" >${total_hour} Hours
+                `;
+            }
+        }
+        else if(res.status == 204) {
+            document.querySelectorAll("td[data-day]").forEach(td => {
+                td.innerHTML = `00:00 AM - 00:00 AM (0 hr 0m)`;
+            });
+        }
+    }
+    catch(error) {
+        console.error("Error: ", error);
+    }
+}
+
+getSchedule();
 getAttendanceData();
+
+
 
