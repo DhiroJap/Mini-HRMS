@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScheduleController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,9 +25,10 @@ Route::group(['middleware' => 'web'], function () {
 
         Route::put('/profile', [ProfileController::class, 'update'])->name('updateProfile');
         Route::put('/change-password', [ProfileController::class, 'changePassword'])->name('changePassword');
+        Route::put('/check-out', [AttendanceController::class, 'checkOut'])->name('checkOut');
 
         Route::post('/check-in', [AttendanceController::class, 'checkIn'])->name('checkIn');
-        Route::put('/check-out', [AttendanceController::class, 'checkOut'])->name('checkOut');
+        Route::post('/schedule', [ScheduleController::class, 'createSchedule'])->name('createSchedule');
     });
 });
 

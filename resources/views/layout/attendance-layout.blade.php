@@ -6,10 +6,11 @@
 
         <title>{{ $title }}</title>
 
-        @vite(['resources/css/app.css', 'resources/js/attendance/structure.js', 'resources/js/attendance/take-attendance.js', 'resources/js/attendance/view-report.js'])
+        @vite(['resources/css/app.css', 'resources/js/attendance/structure.js', 'resources/js/attendance/take-attendance.js', 'resources/js/attendance/view-report.js', 'resources/js/attendance/input-schedule.js'])
 
     </head>
     <body class="min-h-screen font-sans antialiased">
+        <x-set-schedule />
         <livewire:toasts />
         <div>@include('components.authenticated-navbar')</div>
 

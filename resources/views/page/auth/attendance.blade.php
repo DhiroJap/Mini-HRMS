@@ -12,10 +12,10 @@
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
                 <div class="flex flex-col justify-center items-center">
-                    <p id="current-date" class="text-5xl mb-5 font-bold">  </p>
+                    <p id="current-date" class="text-5xl mb-5 font-bold"></p>
                     <div class="flex gap-1">
-                        <p id="current-hour" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center">  </p>
-                        <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"> </p>
+                        <p id="current-hour" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
+                        <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
                     </div>
                     @if($status === 'not_checked_in')
 
@@ -47,7 +47,8 @@
 
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
-                <div class="flex flex-col mt-4">
+                <form class="flex flex-col mt-4" method="post">
+                    @csrf
                     <div class="-m-1.5 overflow-x-auto">
                         <div class="p-1.5 min-w-full inline-block align-middle">
                             <div class="border rounded-lg shadow overflow-hidden border-[#6A6A6A]">
@@ -66,77 +67,25 @@
                                         </tr>
                                     </thead>
                                     <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Monday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <button id="edit-schedule-1">
-                                                    <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" ><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Tuesday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-2"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Wednesday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-3"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Thursday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-4"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Friday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-5"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Saturday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-6"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
-                                        <tr class="divide-x divide-[#6A6A6A]">
-                                            <td class="px-6 py-4">Sunday</td>
-                                            <td class="px-6 py-4">00:00 AM - 00:00 AM (0 hr 0m)</td>
-                                            <td class="px-6 py-4 flex items-center justify-center">
-                                                <svg stroke="currentColor" fill="#2563EB" stroke-width="0" viewBox="0 0 24 24" height="32" width="32" xmlns="http://www.w3.org/2000/svg" id="edit-schedule-7"><path fill="none" d="M0 0h24v24H0z"></path><path d="M3 10h11v2H3v-2zm0-2h11V6H3v2zm0 8h7v-2H3v2zm15.01-3.13.71-.71a.996.996 0 0 1 1.41 0l.71.71c.39.39.39 1.02 0 1.41l-.71.71-2.12-2.12zm-.71.71-5.3 5.3V21h2.12l5.3-5.3-2.12-2.12z"></path></svg>
-                                            </td>
-                                        </tr>
+                                        <x-input-schedule-row day="Monday" />
+                                        <x-input-schedule-row day="Tuesday" />
+                                        <x-input-schedule-row day="Wednesday" />
+                                        <x-input-schedule-row day="Thursday" />
+                                        <x-input-schedule-row day="Friday" />
+                                        <x-input-schedule-row day="Saturday" />
+                                        <x-input-schedule-row day="Sunday" />
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="flex items-center justify-end">
-                    <p class="font-medium mx-4">Work Hours: <span class="text-[#EF4444]">6 Hours</span></p>
-                    <button class="w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2  text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Save time</button>
-                </div>
+                    <div class="flex items-center justify-end mt-4" id="empty-error"> </div>
+                    <div class="flex items-center justify-end mt-4">
+                        <p class="font-medium mx-4" id="total-work-hour">Work Hours: <span class="text-[#EF4444]" >0 Hours</span></p>
+                        <button class="w-auto justify-center rounded-md font-semibold px-3 py-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 bg-gray-400 cursor-not-allowed" id="save-schedule">Save Schedule</button>
+                    </div>                
+                </form>
             </div>
-
-            <x-schedule-submit-popup id="edit-time-1" date="Monday" />
-            <x-schedule-submit-popup id="edit-time-2" date="Tuesday" />
-            <x-schedule-submit-popup id="edit-time-3" date="Wednesday" />
-            <x-schedule-submit-popup id="edit-time-4" date="Thursday" />
-            <x-schedule-submit-popup id="edit-time-5" date="Friday" />
-            <x-schedule-submit-popup id="edit-time-6" date="Saturday" />
-            <x-schedule-submit-popup id="edit-time-7" date="Sunday" />
-
         </div>
 
         <!-- Report Section -->
@@ -151,7 +100,7 @@
 
                 <div class="">
                     <h3 class="text-md font-medium">Current Date</h3>
-                    <p id='current-time' class="text-sm text-[#595960]">Today is {{ date("l, d F Y. h:i:s A") }}</p>
+                    <p id='current-time' class="text-sm text-[#595960]">Today is {{ date("l, d F Y. H:i:s") }}</p>
                 </div>
 
                 <div class="">
