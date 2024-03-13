@@ -185,7 +185,15 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                            {{-- Data here --}}
+                                            {{-- @foreach ($weeklyAttendances as $index => $report)
+                                            <tr class='divide-x divide-[#6A6A6A]'>
+                                                <td class="px-6 py-4">{{ $index + 1 }}</td>
+                                                <td class="px-6 py-4">{{ $report->date }}</td>
+                                                <td class="px-6 py-4">{{ $report->check_in }}</td>
+                                                <td class="px-6 py-4">{{ $report->check_out }}</td>
+                                                <td class="px-6 py-4">{{ $report->work_hours }}</td>
+                                            </tr>
+                                            @endforeach --}}
                                         </tbody>
                                     </table>
                                 </div>
@@ -226,14 +234,22 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                           {{-- Data Here --}}
+                                            @foreach ($dataMonth as $index => $monthlyData)
+                                            <tr class='divide-x divide-[#6A6A6A]'>
+                                                <td class="px-6 py-4">{{ $index + 1 }}</td>
+                                                <td class="px-6 py-4">{{ $monthlyData['date']}}</td>
+                                                <td class="px-6 py-4">{{ $monthlyData['check_in']}}</td>
+                                                <td class="px-6 py-4">{{ $monthlyData['check_out'] }}</td>
+                                                <td class="px-6 py-4">{{ $monthlyData['total_hour'] }}</td>
+                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#EF4444]">{{--Data Here--}}</span></p>
+                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#EF4444]">{{$total_hour_in_month}}</span></p>
                 </div>
             </div>
         </div>
