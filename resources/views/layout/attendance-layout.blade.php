@@ -6,7 +6,7 @@
 
         <title>{{ $title }}</title>
 
-        @vite(['resources/css/app.css', 'resources/js/attendance/structure.js', 'resources/js/attendance/take-attendance.js'])
+        @vite(['resources/css/app.css', 'resources/js/attendance/structure.js', 'resources/js/attendance/take-attendance.js', 'resources/js/attendance/view-report.js'])
 
     </head>
     <body class="min-h-screen font-sans antialiased">

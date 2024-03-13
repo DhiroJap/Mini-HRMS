@@ -9,39 +9,65 @@ class AttendanceController extends Controller
 {
     public function viewAttendance()
     {
-        // $user = auth()->user();
+        $user = auth()->user();
         $currentDate = now()->toDateString();
-        $existingAttendance = Attendance::where("user_id", "953f6b00-a1e2-43ea-a4ed-8781a0917fd2")->whereDate("date", $currentDate)->exists();
+        $existingAttendance = Attendance::where("user_id", $user->user_id)->whereDate("date", $currentDate)->exists();
         $status = $existingAttendance ? 'checked_in' : 'not_checked_in';
 
-        $retrieved_data = Attendance::where("user_id", "953f6b00-a1e2-43ea-a4ed-8781a0917fd2")->orderBy('date', 'desc')->get();
+        $retrieved_data = Attendance::where("user_id", $user->user_id)->orderBy('date', 'desc')->get();
         $total_hour_in_month = 0;
+        $data_month = [];
+        $total_hour_in_week = 0;
+        $data_week = [];
 
-        foreach($retrieved_data as $attendance) {
-            if($attendance->date <= Carbon::today() && $attendance->date > Carbon::today()->subDays(30)) {
-                $check_in = Carbon::parse($attendance->check_in);
-                $check_out = Carbon::parse($attendance->check_out);
-                $total_hour = $check_out->diffInHours($check_in);
+        foreach($retrieved_data as $monthly_attendance) {
+            if($monthly_attendance->date <= Carbon::today() && $monthly_attendance->date > Carbon::today()->subDays(31)) {
+                $check_in = Carbon::parse($monthly_attendance->check_in);
+                $check_out = $monthly_attendance->check_out ? Carbon::parse($monthly_attendance->check_out) : null;
+                $total_hour = $check_out ? $check_out->diffInHours($check_in) : null;
 
-                if($check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
+                if($check_out && $check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
                     $total_hour -= 1;
                 };
                 $total_hour_in_month += $total_hour;
 
                 $data_month[] = [
-                    'date' => Carbon::parse($attendance->date)->format('l, j F Y'),
+                    'date' => Carbon::parse($monthly_attendance->date)->format('l, j F Y'),
                     'check_in' => $check_in->format('H:i:s'),
-                    'check_out' => $check_out->format('H:i:s'),
-                    'total_hour' => $total_hour,
+                    'check_out' => $check_out ? $check_out->format('H:i:s') : 'Not checked out',
+                    'total_hour' => $total_hour ?? 'NULL'
                 ];
-        };
-    }
+            };
+         }
+
+         foreach($retrieved_data as $weekly_attendance) {
+            if($weekly_attendance->date <= Carbon::today() && $weekly_attendance->date > Carbon::today()->subDays(8)) {
+                $check_in = Carbon::parse($weekly_attendance->check_in);
+                $check_out = $weekly_attendance->check_out ? Carbon::parse($weekly_attendance->check_out) : null;
+                $total_hour = $check_out ? $check_out->diffInHours($check_in) : null;
+
+                if($check_out && $check_out->format('H:i:s') >= "13:00:00" && $check_in->format('H:i:s') <= "12:00:00") {
+                    $total_hour -= 1;
+                };
+                $total_hour_in_week += $total_hour;
+
+                $data_week[] = [
+                    'date' => Carbon::parse($weekly_attendance->date)->format('l, j F Y'),
+                    'check_in' => $check_in->format('H:i:s'),
+                    'check_out' => $check_out ? $check_out->format('H:i:s') : 'Not checked out',
+                    'total_hour' => $total_hour ?? 'NULL',
+                ];
+            };
+         }
+
         return view("page.auth.attendance", [
             "title" => "Attendance",
             "group" => "attendance",
             "status" => $status,
             'dataMonth' => $data_month,
-            'total_hour_in_month' => $total_hour_in_month,
+            'totalHourInMonth' => $total_hour_in_month,
+            'dataWeek' => $data_week,
+            'totalHourInWeek'=> $total_hour_in_week,
         ]);
     }
 

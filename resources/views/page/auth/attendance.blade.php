@@ -151,7 +151,7 @@
 
                 <div class="">
                     <h3 class="text-md font-medium">Current Date</h3>
-                    <p class="text-sm text-[#595960]">Today is {{ date("l, d F Y. h:i A") }}</p>
+                    <p id='current-time' class="text-sm text-[#595960]">Today is {{ date("l, d F Y. h:i:s A") }}</p>
                 </div>
 
                 <div class="">
@@ -185,22 +185,28 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
-                                            {{-- @foreach ($weeklyAttendances as $index => $report)
+                                        @if (count($dataWeek) > 0)
+                                        @foreach ($dataWeek as $index => $weeklyData)
                                             <tr class='divide-x divide-[#6A6A6A]'>
                                                 <td class="px-6 py-4">{{ $index + 1 }}</td>
-                                                <td class="px-6 py-4">{{ $report->date }}</td>
-                                                <td class="px-6 py-4">{{ $report->check_in }}</td>
-                                                <td class="px-6 py-4">{{ $report->check_out }}</td>
-                                                <td class="px-6 py-4">{{ $report->work_hours }}</td>
+                                                <td class="px-6 py-4">{{ $weeklyData['date'] }}</td>
+                                                <td class="px-6 py-4">{{ $weeklyData['check_in'] }}</td>
+                                                <td class="px-6 py-4">{{ $weeklyData['check_out'] }}</td>
+                                                <td class="px-6 py-4">{{ $weeklyData['total_hour'] }}</td>
                                             </tr>
-                                            @endforeach --}}
+                                        @endforeach 
+                                        @else
+                                            <tr class='divide-x divide-[#6A6A6A]'>
+                                                <td colspan="5">You have no attendance data for the week</td>
+                                            </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#2563EB]">21 Hours</span></p>
+                    <p class="font-medium mt-3">Total Weekly Work Hours : <span class="{{$totalHourInWeek <= 20 ? 'text-red-600' : 'text-[#2563EB]'}}">{{$totalHourInWeek}}</span></p>
                 </div>
 
                 <div class="">
@@ -234,6 +240,7 @@
                                             </tr>
                                         </thead>
                                         <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
+                                            @if(count($dataMonth) > 0)
                                             @foreach ($dataMonth as $index => $monthlyData)
                                             <tr class='divide-x divide-[#6A6A6A]'>
                                                 <td class="px-6 py-4">{{ $index + 1 }}</td>
@@ -243,13 +250,18 @@
                                                 <td class="px-6 py-4">{{ $monthlyData['total_hour'] }}</td>
                                             </tr>
                                             @endforeach
+                                            @else
+                                            <tr class='divide-x divide-[#6A6A6A]'>
+                                                <td colspan='5'>You have no attendance data for the month</td>
+                                            </tr>
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium">Total Weekly Work Hours : <span class="text-[#EF4444]">{{$total_hour_in_month}}</span></p>
+                    <p class="font-medium mt-3">Total Monthly Work Hours : <span class="{{$totalHourInMonth <= 80 ? 'text-red-600' : 'text-[#2563EB]'}}">{{$totalHourInMonth}}</span></p>
                 </div>
             </div>
         </div>

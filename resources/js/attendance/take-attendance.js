@@ -60,5 +60,3 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(clock, 1000);
     }
 });
-
-const checkInButton = document.getElementById("check-in-button");
