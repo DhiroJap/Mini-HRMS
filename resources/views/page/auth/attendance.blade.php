@@ -38,6 +38,59 @@
         </div>
 
         <!-- Input Schedule Section -->
+        @if($hasSchedule)
+        <div id="input-schedule-content" class="hidden flex-1 lg:max-w-2xl">
+            <div class="space-y-6">
+                <div class="">
+                    <h3 class="text-lg font-medium">Input Schedule</h3>
+                    <p class="text-sm text-[#595960]">This is where you upload and view your work schedule.</p>
+                </div>
+
+                <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
+
+                <div class="flex flex-col mt-4">
+                    <div class="-m-1.5 overflow-x-auto">
+                        <div class="p-1.5 min-w-full inline-block align-middle">
+                            <div class="border rounded-lg shadow overflow-hidden border-[#6A6A6A]">
+                                <table class="min-w-full divide-y divide-[#6A6A6A] text-center text-xs">
+                                    <thead class="bg-[#2563EB] font-medium text-white">
+                                        <tr class="divide-x divide-[#6A6A6A]">
+                                            <th scope="col" class="px-6 py-3">
+                                                Day
+                                            </th>
+                                            <th scope="col" class="px-6 py-3">
+                                                Time
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-[#6A6A6A] whitespace-nowrap text-sm text-[#6A6A6A]">
+                                        @foreach($schedules as $schedule)
+                                <tr class="divide-x divide-[#6A6A6A]">
+                                    <td class="px-6 py-4">{{ $schedule['day'] }}</td>
+                                    <td class="px-6 py-4">
+                                        {{-- @if($schedule->start_time === '00:00' && $schedule->end_time === '00:00')
+                                            NO WORK SCHEDULE
+                                        @else
+                                            {{ $schedule->start_time }} - {{ $schedule->end_time }}
+                                        @endif --}}
+                                        {{$schedule['time']}}
+                                    </td>
+                                </tr>
+                                @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-end">
+                    <p class="font-medium mx-4">Work Hours: <span class="text-[#EF4444]">6 Hours</span></p>
+                </div>
+            </div>
+        </div>
+
+        @else
         <div id="input-schedule-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div class="">
@@ -82,11 +135,12 @@
                     <div class="flex items-center justify-end mt-4" id="empty-error"> </div>
                     <div class="flex items-center justify-end mt-4">
                         <p class="font-medium mx-4" id="total-work-hour">Work Hours: <span class="text-[#EF4444]" >0 Hours</span></p>
-                        <button class="w-auto justify-center rounded-md font-semibold px-3 py-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 bg-gray-400 cursor-not-allowed" id="save-schedule">Save Schedule</button>
-                    </div>                
+                        <button id="save-schedule" class="w-auto justify-center rounded-md font-semibold px-3 py-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 bg-[#2563EB] hover:bg-[#2563EB]/90 disabled:hover:bg-gray-400">Save Schedule</button>
+                    </div>
                 </form>
             </div>
         </div>
+        @endif
 
         <!-- Report Section -->
         <div id="report-content" class="hidden flex-1 lg:max-w-2xl">
@@ -143,7 +197,7 @@
                                                 <td class="px-6 py-4">{{ $weeklyData['check_out'] }}</td>
                                                 <td class="px-6 py-4">{{ $weeklyData['total_hour'] }}</td>
                                             </tr>
-                                        @endforeach 
+                                        @endforeach
                                         @else
                                             <tr class='divide-x divide-[#6A6A6A]'>
                                                 <td colspan="5">You have no attendance data for the week</td>

@@ -11,7 +11,7 @@
     </head>
     <body class="min-h-screen font-sans antialiased">
         <x-confirm-change-password-modal />
-    <livewire:toasts />
+        <livewire:toasts />
         <div>@include('components.authenticated-navbar')</div>
 
         <div class="hidden space-y-6 p-10 pb-16 md:block">

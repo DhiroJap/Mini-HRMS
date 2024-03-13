@@ -14,24 +14,25 @@ class ScheduleController extends Controller
         ]);
     }
 
-    public function createSchedule(Request $request) {
-        $request->validate([
-            'day' => 'required|in:Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i|after:start_time',
-        ]);
-
+    public function createSchedule(Request $request)
+    {
         $user = auth()->user();
 
-        $schedule = new Schedule();
-        $schedule->day = $request->day;
-        $schedule->start_time = $request->start_time;
-        $schedule->end_time = $request->end_time;
-        $schedule->user_id = $user->user_id;
-        
-        $schedule->save();
+        foreach ($request->schedules as $scheduleData) {
+            $schedule = new Schedule();
+            $schedule->user_id = $user->user_id;
+            $schedule->day = $scheduleData['currentDay'];
 
-        toast()->success('Nice')->pushOnNextPage();
+            $startTime = strtotime($scheduleData['start']);
+            $schedule->start_time = date('Y-m-d H:i:s', $startTime);
+
+            $endTime = strtotime($scheduleData['end']);
+            $schedule->end_time = date('Y-m-d H:i:s', $endTime);
+
+            $schedule->save();
+        }
+
+        toast()->success('Schedule input successfully!')->pushOnNextPage();
         return redirect()->back();
     }
 }

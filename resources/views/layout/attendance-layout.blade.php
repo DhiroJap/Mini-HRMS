@@ -10,6 +10,7 @@
 
     </head>
     <body class="min-h-screen font-sans antialiased">
+        <x-confirm-input-schedule />
         <x-set-schedule />
         <livewire:toasts />
         <div>@include('components.authenticated-navbar')</div>

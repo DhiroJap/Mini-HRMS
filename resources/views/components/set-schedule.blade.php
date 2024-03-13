@@ -1,4 +1,4 @@
-<div id="set-schedule-modal" class="">
+<div id="set-schedule-modal" class="hidden">
     <div class="left-0 top-0 fixed w-screen h-screen z-50">
         <div id="schedule-backdrop" class="bg-black bg-opacity-40 backdrop-blur-sm h-full w-full absolute" id=""></div>
             <div class="w-full h-full flex items-center justify-center z-10">

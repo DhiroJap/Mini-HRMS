@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Attendance;
+use App\Models\Schedule;
 use Carbon\Carbon;
 
 class AttendanceController extends Controller
@@ -60,6 +61,33 @@ class AttendanceController extends Controller
             };
          }
 
+         $hasSchedule = Schedule::where('user_id', $user->user_id)->exists();
+         $schedules = Schedule::where('user_id', $user->user_id)->get();
+
+         $formattedSchedules = [];
+
+        foreach ($schedules as $schedule) {
+            $startTime = Carbon::parse($schedule->start_time)->format('H:i');
+            $endTime = Carbon::parse($schedule->end_time)->format('H:i');
+
+            $formattedSchedule = [
+                'day' => $schedule->day,
+                'time' => ($startTime === '00:00' && $endTime === '00:00') ? 'No work schedule' : "$startTime - $endTime",
+            ];
+
+            $exists = false;
+            foreach ($formattedSchedules as $existingSchedule) {
+                if ($existingSchedule['day'] === $formattedSchedule['day'] && $existingSchedule['time'] === $formattedSchedule['time']) {
+                    $exists = true;
+                    break;
+                }
+            }
+
+        if (!$exists) {
+            $formattedSchedules[] = $formattedSchedule;
+            }
+        }
+
         return view("page.auth.attendance", [
             "title" => "Attendance",
             "group" => "attendance",
@@ -68,6 +96,8 @@ class AttendanceController extends Controller
             'totalHourInMonth' => $total_hour_in_month,
             'dataWeek' => $data_week,
             'totalHourInWeek'=> $total_hour_in_week,
+            'hasSchedule'=> $hasSchedule,
+            'schedules'=>$formattedSchedules
         ]);
     }
 

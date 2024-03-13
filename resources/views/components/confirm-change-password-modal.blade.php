@@ -13,7 +13,7 @@
                 <h3 class="text-lg font-medium text-gray-900" id="modal-title">Confirm Password</h3>
                 <div class="flex flex-col mt-1 gap-2">
                     <p class="text-sm text-gray-500" id="modal-content">
-                    Please enter your current password to proceed.
+                    Please enter your current password to continue.
                     </p>
                     <input id="new-password-input-transferred" name="newPassword" class="hidden" />
                     <input id='confirm-change-password' name="currentPassword" class="h-10 w-full rounded-md border border-[#E5E5E5] bg-[#FFFFFF] px-3 py-2 text-sm ring-offset-[#FFFFFF] placeholder:text-[#737373] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" type="password">
