@@ -17,6 +17,10 @@
                         <p id="current-hour" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
                         <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
                     </div>
+                    @if($hasSchedule)
+                    @if($cannotTakeAttendance)
+                    <p class="mt-4 text-red-600">You cannot take attendance today!</p>
+                    @else
                     @if($status === 'not_checked_in')
 
                     <form action="/check-in" method="POST">
@@ -32,6 +36,10 @@
                     <button type="submit" id="check-out-button" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check Out</button>
                     </form>
 
+                    @endif
+                    @endif
+                    @else
+                    <p class="mt-4 text-red-600">You must input your schedule first before taking attendance!</p>
                     @endif
                 </div>
             </div>

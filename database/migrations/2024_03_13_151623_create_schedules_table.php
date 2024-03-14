@@ -16,8 +16,8 @@ return new class extends Migration
             $table->uuid('user_id');
             $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->enum('day', ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']);
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }

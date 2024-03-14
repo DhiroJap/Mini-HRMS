@@ -17,11 +17,11 @@ class ScheduleController extends Controller
             $schedule->user_id = $user->user_id;
             $schedule->day = $scheduleData['currentDay'];
 
-            $startTime = strtotime($scheduleData['start']);
-            $schedule->start_time = date('Y-m-d H:i:s', $startTime);
+            $schedule->start_time = $scheduleData['start'];
+            // $schedule->start_time = date('Y-m-d H:i:s', $startTime);
 
-            $endTime = strtotime($scheduleData['end']);
-            $schedule->end_time = date('Y-m-d H:i:s', $endTime);
+            $schedule->end_time = $scheduleData['end'];
+            // $schedule->end_time = date('Y-m-d H:i:s', $endTime);
 
             $schedule->save();
         }

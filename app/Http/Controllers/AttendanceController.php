@@ -94,6 +94,40 @@ class AttendanceController extends Controller
             }
         }
 
+        $previousAttendanceDate = Attendance::where("user_id", $user->user_id)->where('date', '<', $currentDate)->orderBy('date', 'desc')->whereNull('check_out')->value('date');
+// dd($previousAttendanceDate);
+        if ($previousAttendanceDate) {
+            $scheduleToBeChanged = Attendance::where('user_id', $user->user_id)->where('date', $previousAttendanceDate,)->first();
+
+            if ($scheduleToBeChanged) {
+                $checkOutToBeChanged = $scheduleToBeChanged->check_out;
+
+                $getDayFromDate = Carbon::parse($scheduleToBeChanged->date)->format('l');
+                $newCheckOutValue = Schedule::where('user_id', $user->user_id)->where('day', $getDayFromDate)->value('end_time');
+                $newCheckOutValueTime = Carbon::parse($newCheckOutValue)->format('H:i:s');
+
+                $newString = $previousAttendanceDate . ' ' . $newCheckOutValueTime;
+                
+                $scheduleToBeChanged->update(['check_out'=> $newString]);
+            }
+        }
+
+        // dd(strtotime('00:00:00'));
+
+        // dd(date('Y-m-d H:i:s', strtotime('00:00:00')));
+
+        $cannotTakeAttendance = true;
+
+        $emptySchedule = Schedule::where('user_id', $user->user_id)->where('start_time', '00:00:00')->get();
+        $currentDay = Carbon::parse($currentDate)->format('l');
+
+        foreach($emptySchedule as $singleSchedule) {
+           if($singleSchedule['day'] === $currentDay) {
+            $cannotTakeAttendance = true;
+           };
+        }
+
+
         return view("page.auth.attendance", [
             "title" => "Attendance",
             "group" => "attendance",
@@ -104,7 +138,8 @@ class AttendanceController extends Controller
             'totalHourInWeek'=> $total_hour_in_week,
             'hasSchedule'=> $hasSchedule,
             'schedules'=> $formattedSchedules,
-            'workHours' => $totalScheduleWorkHours
+            'workHours' => $totalScheduleWorkHours,
+            'cannotTakeAttendance' => $cannotTakeAttendance
         ]);
     }
 
