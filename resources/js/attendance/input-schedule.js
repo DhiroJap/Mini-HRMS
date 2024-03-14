@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ultimateCancelButton.addEventListener("click", function (event) {
         confirmScheduleModal.classList.add("hidden");
+        document.body.classList.remove("overflow-hidden");
         event.preventDefault();
     });
 

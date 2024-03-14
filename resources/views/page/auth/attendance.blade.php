@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end">
-                    <p class="font-medium mx-4">Work Hours: <span class="{{$workHours >= 20 ?  'text-[#2563EB]' : 'text-red-600'}}">{{$workHours}}</span></p>
+                    <p class="font-medium mx-4">Work Hours: <span class="{{$workHours >= 20 ?  'text-[#2563EB]' : 'text-red-600'}}">{{$workHours}} Hours</span></p>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@
             <div class="space-y-6">
                 <div class="">
                     <h3 class="text-lg font-medium">Input Schedule</h3>
-                    <p class="text-sm text-[#595960]">This is where you upload your work schedule.</p>
+                    <p class="text-sm text-[#595960]">This is where you upload and view your work schedule.</p>
                 </div>
 
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
