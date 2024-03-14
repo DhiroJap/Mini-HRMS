@@ -107,7 +107,7 @@ class AttendanceController extends Controller
                 $newCheckOutValueTime = Carbon::parse($newCheckOutValue)->format('H:i:s');
 
                 $newString = $previousAttendanceDate . ' ' . $newCheckOutValueTime;
-                
+
                 $scheduleToBeChanged->update(['check_out'=> $newString]);
             }
         }
@@ -116,7 +116,7 @@ class AttendanceController extends Controller
 
         // dd(date('Y-m-d H:i:s', strtotime('00:00:00')));
 
-        $cannotTakeAttendance = true;
+        $cannotTakeAttendance = false;
 
         $emptySchedule = Schedule::where('user_id', $user->user_id)->where('start_time', '00:00:00')->get();
         $currentDay = Carbon::parse($currentDate)->format('l');
