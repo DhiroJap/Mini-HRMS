@@ -16,18 +16,18 @@
                         <form method="post">
                         @csrf
                             <div class="flex justify-center items-center p-4 md:p-5 md:mx-4">
-                                <div class="flex justify-between w-full">
-                                    <div class="flex-row w-full mr-4">
+                                <div class="sm:flex justify-between w-full">
+                                    <div class="flex-row w-full sm:mr-4">
                                         <label for="start" class="flex my-2 text-lg">From Hour</label>
                                         <input type="time" id="time-start" class="rounded-lg border-2 border-[#6A6A6A] px-2 py-1 w-full">
                                     </div>
-                                    <div class="flex-row w-full ml-4">
+                                    <div class="flex-row w-full sm:ml-4">
                                         <label for="end" class="flex my-2 text-lg">To Hour</label>
                                         <input type="time" id="time-end" class="rounded-lg border-2 border-[#6A6A6A] px-2 py-1 w-full">
                                     </div>
                                 </div>
                             </div>
-                            <p class="text-sm text-red-600 px-4 md:px-5 md:mx-4" id="save-time-error"></p>
+                            <p class="text-sm text-red-600 px-4 md:px-5 md:mx-4 text-center sm:text-left" id="save-time-error"></p>
                         </form>
 
                         <div class="flex items-center justify-end p-4 md:p-5 md:mx-4">

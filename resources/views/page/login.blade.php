@@ -1,7 +1,7 @@
 @extends('layout.default')
 
 @section('content')
-<div class="flex flex-col min-h-screen items-center justify-center lg:px-8">
+<div class="flex flex-col min-h-screen items-center justify-center px-4 sm:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-lg">
         <form id="login-form" class="space-y-2" method="POST" action="/login">
             @csrf

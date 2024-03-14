@@ -18,28 +18,28 @@
                         <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
                     </div>
                     @if($hasSchedule)
-                    @if($cannotTakeAttendance)
-                    <p class="mt-4 text-red-600">You cannot take attendance today!</p>
+                        @if($cannotTakeAttendance)
+                            <p class="mt-4 text-red-600 text-center">You cannot take attendance today!</p>
+                        @else
+                            @if($status === 'not_checked_in')
+
+                                <form action="/check-in" method="POST">
+                                @csrf
+                                <button type="submit" id="check-in-button" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check In</button>
+                                </form>
+
+                            @else
+
+                                <form action="/check-out" method="POST">
+                                @csrf
+                                @method('PUT')
+                                <button type="submit" id="check-out-button" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check Out</button>
+                                </form>
+
+                            @endif
+                        @endif
                     @else
-                    @if($status === 'not_checked_in')
-
-                    <form action="/check-in" method="POST">
-                    @csrf
-                    <button type="submit" id="check-in-button" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check In</button>
-                    </form>
-
-                    @else
-
-                    <form action="/check-out" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <button type="submit" id="check-out-button" class="flex mt-5 w-auto justify-center rounded-md font-semibold bg-blue-600 px-3 py-2.5 text-lg leading-6 text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">Check Out</button>
-                    </form>
-
-                    @endif
-                    @endif
-                    @else
-                    <p class="mt-4 text-red-600">You must input your schedule first before taking attendance!</p>
+                        <p class="mt-4 text-red-600 text-center">You must input your schedule first before taking attendance!</p>
                     @endif
                 </div>
             </div>
@@ -50,8 +50,8 @@
         <div id="input-schedule-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div class="flex justify-center items-center flex-col md:items-start">
-                    <h3 class="text-lg font-medium">Input Schedule</h3>
-                    <p class="text-sm text-[#595960]">This is where you upload and view your work schedule.</p>
+                    <h3 class="text-lg font-medium text-center md:text-left">Input Schedule</h3>
+                    <p class="text-sm text-[#595960] text-center md:text-left">This is where you upload and view your work schedule.</p>
                 </div>
 
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
@@ -87,8 +87,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center justify-end">
-                    <p class="font-medium mx-4">Work Hours: <span class="{{$workHours >= 20 ?  'text-[#2563EB]' : 'text-red-600'}}">{{$workHours}} Hours</span></p>
+                <div class="flex items-center md:justify-end justify-center">
+                    <p class="font-medium md:mx-4">Work Hours: <span class="{{$workHours >= 20 ?  'text-[#2563EB]' : 'text-red-600'}}">{{$workHours}} Hours</span></p>
                 </div>
             </div>
         </div>
@@ -97,8 +97,8 @@
         <div id="input-schedule-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
                 <div class="flex justify-center items-center flex-col md:items-start">
-                    <h3 class="text-lg font-medium">Input Schedule</h3>
-                    <p class="text-sm text-[#595960]">This is where you upload and view your work schedule.</p>
+                    <h3 class="text-lg font-medium text-center md:text-left">Input Schedule</h3>
+                    <p class="text-sm text-[#595960] text-center md:text-left">This is where you upload and view your work schedule.</p>
                 </div>
 
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
@@ -136,8 +136,8 @@
                         </div>
                     </div>
                     <div class="flex items-center justify-end mt-4" id="empty-error"> </div>
-                    <div class="flex items-center justify-end mt-4">
-                        <p class="font-medium mx-4" id="total-work-hour">Work Hours: <span class="text-[#EF4444]" >0 Hours</span></p>
+                    <div class="flex flex-col md:flex-row items-center justify-end mt-4">
+                        <p class="font-medium pb-2 md:p-0 md:mx-4 text-center" id="total-work-hour">Work Hours: <span class="text-[#EF4444]" >0 Hours</span></p>
                         <button id="save-schedule" class="w-auto justify-center rounded-md font-semibold px-3 py-2 text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 bg-[#2563EB] hover:bg-[#2563EB]/90 disabled:hover:bg-gray-400">Save Schedule</button>
                     </div>
                 </form>
@@ -150,19 +150,19 @@
             <div class="space-y-6">
                 <div class="flex justify-center items-center flex-col md:items-start">
                     <h3 class="text-lg font-medium">Report</h3>
-                    <p class="text-sm text-[#595960]">This is where your weekly and monthly work report will be displayed.</p>
+                    <p class="text-sm text-[#595960] text-center md:text-left">This is where your weekly and monthly work report will be displayed.</p>
                 </div>
 
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
                 <div class="">
-                    <h3 class="text-md font-medium">Current Date</h3>
-                    <p id='current-time' class="text-sm text-[#595960]">Today is {{ date("l, d F Y. H:i:s") }}</p>
+                    <h3 class="text-md font-medium text-center md:text-left">Current Date</h3>
+                    <p id='current-time' class="text-sm text-[#595960] text-center md:text-left">Today is {{ date("l, d F Y. H:i:s") }}</p>
                 </div>
 
                 <div class="">
-                    <h3 class="text-md font-medium">Weekly Report</h3>
-                    <p class="text-sm text-[#595960]">This is your work report for the last 7 days.</p>
+                    <h3 class="text-md font-medium text-center md:text-left">Weekly Report</h3>
+                    <p class="text-sm text-[#595960] text-center md:text-left">This is your work report for the last 7 days.</p>
 
                     <!-- Weekly Table -->
                     <div class="flex flex-col mt-4">
@@ -212,12 +212,12 @@
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium mt-3">Total Weekly Work Hours : <span class="{{$totalHourInWeek <= 20 ? 'text-red-600' : 'text-[#2563EB]'}}">{{$totalHourInWeek}}</span></p>
+                    <p class="font-medium mt-3 text-center md:text-left">Total Weekly Work Hours : <span class="{{$totalHourInWeek <= 20 ? 'text-red-600' : 'text-[#2563EB]'}}">{{$totalHourInWeek}}</span></p>
                 </div>
 
                 <div class="">
-                    <h3 class="text-md font-medium">Monthly Report</h3>
-                    <p class="text-sm text-[#595960]">This is your work report for the last 30 days.</p>
+                    <h3 class="text-md font-medium text-center md:text-left">Monthly Report</h3>
+                    <p class="text-sm text-[#595960] text-center md:text-left">This is your work report for the last 30 days.</p>
 
                     <!-- Monthly Table -->
                     <div class="flex flex-col mt-4">
@@ -267,7 +267,7 @@
                             </div>
                         </div>
                     </div>
-                    <p class="font-medium mt-3">Total Monthly Work Hours : <span class="{{$totalHourInMonth <= 80 ? 'text-red-600' : 'text-[#2563EB]'}}">{{$totalHourInMonth}}</span></p>
+                    <p class="font-medium mt-3 text-center md:text-left">Total Monthly Work Hours : <span class="{{$totalHourInMonth <= 80 ? 'text-red-600' : 'text-[#2563EB]'}}">{{$totalHourInMonth}}</span></p>
                 </div>
             </div>
         </div>

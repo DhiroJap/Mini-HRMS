@@ -1,3 +1,5 @@
+<!-- Ndak kepake -->
+
 @props(['id', 'date'])
 
 <div class="hidden modal" id="{{ $id }}">

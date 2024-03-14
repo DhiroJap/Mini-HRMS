@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", function () {
             workTimeInMins: workTimeInMins,
         };
 
-        timeDisplay.textContent = `${formatTime(startHour, startMinute)} - ${formatTime(endHour, endMinute)} (${totalHour}hr ${totalMinute}m)`;
+        timeDisplay.textContent = `${startHour}:${startMinute} - ${endHour}:${endMinute} (${totalHour}hr ${totalMinute}m)`;
     }
 
     function totalWorkHour() {
@@ -250,8 +250,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let workTimeInMins = endTimeDuration - startTimeDuration;
 
-        if (startTime.getHours() <= 12 && endTime.getHours() >= 13) {
+        // Kalau waktu start < 12 dan end > 13
+        if ((startTime.getHours() < 12 && startTime.getMinutes() >= 0) && (endTime.getHours() > 13 && endTime.getMinutes() >= 0)) {
             workTimeInMins = workTimeInMins - 60;
+        }
+        // Kalau waktu 12:00 - 13:00
+        else if ((startTime.getHours() == 12 && startTime.getMinutes() >= 0) && (endTime.getHours() == 13 && endTime.getMinutes() == 0)) {
+            workTimeInMins = 0;
+        }
+        // Kalau waktu start 12:00-12:59 dan end > 13:00
+        else if ((startTime.getHours() == 12 && startTime.getMinutes() >= 0) && (endTime.getHours() >= 13 && endTime.getMinutes() >= 0)) {
+            workTimeInMins = workTimeInMins - (60 - startTime.getMinutes());
+        }
+        // Kalau waktu start < 12:00 dan end 12:00 - 12:59
+        else if ((startTime.getHours() < 12 && startTime.getMinutes() >= 0) && (endTime.getHours() == 12 && endTime.getMinutes() >= 0)) {
+            workTimeInMins = workTimeInMins - endTime.getMinutes();
         }
 
         let hour = Math.floor(workTimeInMins / 60);
@@ -274,15 +287,16 @@ document.addEventListener("DOMContentLoaded", function () {
         return errorMessages;
     }
 
-    function formatTime(hour, minute) {
-        const ampm = hour >= 12 ? "PM" : "AM";
+    // Gak kepake buat samain format pas udah submit schedule
+    // function formatTime(hour, minute) {
+    //     const ampm = hour >= 12 ? "PM" : "AM";
 
-        hour = hour % 12;
-        hour = hour === 0 ? 12 : hour;
-        hour = hour < 10 ? "0" + hour : hour;
+    //     hour = hour % 12;
+    //     hour = hour === 0 ? 12 : hour;
+    //     hour = hour < 10 ? "0" + hour : hour;
 
-        return `${hour}:${minute} ${ampm}`;
-    }
+    //     return `${hour}:${minute} ${ampm}`;
+    // }
 
     function closeModal() {
         setScheduleModal.classList.add("hidden");
