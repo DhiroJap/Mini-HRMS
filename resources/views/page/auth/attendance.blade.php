@@ -12,8 +12,8 @@
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
                 <div class="flex flex-col justify-center items-center">
-                    <p id="current-date" class="text-4xl md:text-5xl mb-5 font-bold"></p>
-                    <div class="flex gap-1">
+                    <p id="current-date" class="text-2xl sm:text-4xl mb-5 font-bold"></p>
+                    <div class="flex gap-3 sm:flex-row flex-col">
                         <p id="current-hour" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
                         <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
                     </div>
