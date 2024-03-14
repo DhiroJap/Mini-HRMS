@@ -15,7 +15,7 @@
         <livewire:toasts />
         <div>@include('components.authenticated-navbar')</div>
 
-        <div class="hidden space-y-6 p-10 pb-16 md:block">
+        <div class="space-y-6 p-10 pb-16 display:block">
     <div class="space-y-0.5">
         <h2 class="text-2xl font-bold tracking-tight">Attendance</h2>
         <p class="text-[#595960]">Manage your work schedule and attendance here.</p>
@@ -23,7 +23,7 @@
 
     <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full my-6"></div>
 
-    <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+    <div class="flex flex-col space-y-8 md:flex-row md:space-x-12 md:space-y-0">
         <aside class="-mx-4 lg:w-1/5">
             @include('components.sidebar')
         </aside>

@@ -4,7 +4,7 @@
         <!-- Take Attendance Section -->
         <div id="take-attendance-content" class="flex-1 lg:max-w-2xl">
             <div class="space-y-6">
-                <div>
+                <div class="flex justify-center items-center flex-col md:items-start">
                     <h3 class="text-lg font-medium">Take Attendance</h3>
                     <p class="text-sm text-[#595960]">This is where you verify your attendance.</p>
                 </div>
@@ -12,7 +12,7 @@
                 <div class="shrink-0 bg-[#E2E8F0] h-[1px] w-full"></div>
 
                 <div class="flex flex-col justify-center items-center">
-                    <p id="current-date" class="text-5xl mb-5 font-bold"></p>
+                    <p id="current-date" class="text-4xl md:text-5xl mb-5 font-bold"></p>
                     <div class="flex gap-1">
                         <p id="current-hour" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
                         <p id="current-minute" class="flex text-9xl font-extrabold w-52 h-36 bg-gray-200 border-gray rounded-2xl justify-center"></p>
@@ -41,7 +41,7 @@
         @if($hasSchedule)
         <div id="input-schedule-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
-                <div class="">
+                <div class="flex justify-center items-center flex-col md:items-start">
                     <h3 class="text-lg font-medium">Input Schedule</h3>
                     <p class="text-sm text-[#595960]">This is where you upload and view your work schedule.</p>
                 </div>
@@ -88,7 +88,7 @@
         @else
         <div id="input-schedule-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
-                <div class="">
+                <div class="flex justify-center items-center flex-col md:items-start">
                     <h3 class="text-lg font-medium">Input Schedule</h3>
                     <p class="text-sm text-[#595960]">This is where you upload your work schedule.</p>
                 </div>
@@ -140,7 +140,7 @@
         <!-- Report Section -->
         <div id="report-content" class="hidden flex-1 lg:max-w-2xl">
             <div class="space-y-6">
-                <div class="">
+                <div class="flex justify-center items-center flex-col md:items-start">
                     <h3 class="text-lg font-medium">Report</h3>
                     <p class="text-sm text-[#595960]">This is where your weekly and monthly work report will be displayed.</p>
                 </div>
