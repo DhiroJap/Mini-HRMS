@@ -8,9 +8,6 @@ export default {
         "./vendor/usernotnull/tall-toasts/resources/views/**/*.blade.php",
     ],
     theme: {
-        screens: {
-            'custom': '520px',
-        },
         extend: {},
     },
     plugins: [],
