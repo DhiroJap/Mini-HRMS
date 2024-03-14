@@ -3,7 +3,7 @@
         <div id="background-overlay" class="fixed inset-0 bg-gray-500 opacity-75"></div>
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle max-w-lg w-full">
         <form id="confirm-change-password-form" class="w-full" action="{{ route('changePassword') }}" method="POST">
           @csrf
           @method('PUT')
@@ -16,7 +16,7 @@
                     Please enter your current password to continue.
                     </p>
                     <input id="new-password-input-transferred" name="newPassword" class="hidden" />
-                    <input id='confirm-change-password' name="currentPassword" class="h-10 w-full rounded-md border border-[#E5E5E5] bg-[#FFFFFF] px-3 py-2 text-sm ring-offset-[#FFFFFF] placeholder:text-[#737373] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" type="password">
+                    <input id='confirm-change-password' name="currentPassword" class="h-10 w-full rounded-md border border-[#E5E5E5] bg-[#FFFFFF] px-3 py-2 text-sm ring-offset-[#FFFFFF] placeholder:text-[#737373] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 text-center sm:text-left" type="password">
                     <p id='confirm-change-password-error' class="text-sm font-medium text-red-600"></p>
                 </div>
               </div>
