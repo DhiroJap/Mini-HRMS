@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
-    public function viewSchedule() {
-        return view("page.auth.attendance", [
-            'group'=>'attendance',
-            'title'=>'Attendance'
-        ]);
-    }
 
     public function createSchedule(Request $request)
     {

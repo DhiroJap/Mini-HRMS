@@ -65,10 +65,16 @@ class AttendanceController extends Controller
          $schedules = Schedule::where('user_id', $user->user_id)->get();
 
          $formattedSchedules = [];
+         $totalScheduleWorkHours = 0;
 
         foreach ($schedules as $schedule) {
+
             $startTime = Carbon::parse($schedule->start_time)->format('H:i');
             $endTime = Carbon::parse($schedule->end_time)->format('H:i');
+
+            $newStart = Carbon::parse($schedule->start_time);
+            $newEnd = Carbon::parse($schedule->end_time);
+            $totalScheduleWorkHours += $newStart->diffInHours($newEnd);
 
             $formattedSchedule = [
                 'day' => $schedule->day,
@@ -97,7 +103,8 @@ class AttendanceController extends Controller
             'dataWeek' => $data_week,
             'totalHourInWeek'=> $total_hour_in_week,
             'hasSchedule'=> $hasSchedule,
-            'schedules'=>$formattedSchedules
+            'schedules'=> $formattedSchedules,
+            'workHours' => $totalScheduleWorkHours
         ]);
     }
 

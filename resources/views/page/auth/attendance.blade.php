@@ -69,11 +69,6 @@
                                 <tr class="divide-x divide-[#6A6A6A]">
                                     <td class="px-6 py-4">{{ $schedule['day'] }}</td>
                                     <td class="px-6 py-4">
-                                        {{-- @if($schedule->start_time === '00:00' && $schedule->end_time === '00:00')
-                                            NO WORK SCHEDULE
-                                        @else
-                                            {{ $schedule->start_time }} - {{ $schedule->end_time }}
-                                        @endif --}}
                                         {{$schedule['time']}}
                                     </td>
                                 </tr>
@@ -85,7 +80,7 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-end">
-                    <p class="font-medium mx-4">Work Hours: <span class="text-[#EF4444]">6 Hours</span></p>
+                    <p class="font-medium mx-4">Work Hours: <span class="{{$workHours >= 20 ?  'text-[#2563EB]' : 'text-red-600'}}">{{$workHours}}</span></p>
                 </div>
             </div>
         </div>
