@@ -250,21 +250,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
         let workTimeInMins = endTimeDuration - startTimeDuration;
 
-        // Kalau waktu start < 12 dan end > 13
-        if ((startTime.getHours() < 12 && startTime.getMinutes() >= 0) && (endTime.getHours() > 13 && endTime.getMinutes() >= 0)) {
-            workTimeInMins = workTimeInMins - 60;
+        if (startTime.getHours() < 12 && startTime.getMinutes() >= 0) {
+            // Kalau waktu start < 12 dan end > 13
+            if (endTime.getHours() >= 13 && endTime.getMinutes() >= 0) {
+                workTimeInMins = workTimeInMins - 60;
+            }
+            // Kalau waktu start < 12:00 dan end 12:00 - 12:59
+            else if (endTime.getHours() == 12 && endTime.getMinutes() >= 0) {
+                workTimeInMins = workTimeInMins - endTime.getMinutes();
+            }
         }
-        // Kalau waktu 12:00 - 13:00
-        else if ((startTime.getHours() == 12 && startTime.getMinutes() >= 0) && (endTime.getHours() == 13 && endTime.getMinutes() == 0)) {
-            workTimeInMins = 0;
-        }
-        // Kalau waktu start 12:00-12:59 dan end > 13:00
-        else if ((startTime.getHours() == 12 && startTime.getMinutes() >= 0) && (endTime.getHours() >= 13 && endTime.getMinutes() >= 0)) {
-            workTimeInMins = workTimeInMins - (60 - startTime.getMinutes());
-        }
-        // Kalau waktu start < 12:00 dan end 12:00 - 12:59
-        else if ((startTime.getHours() < 12 && startTime.getMinutes() >= 0) && (endTime.getHours() == 12 && endTime.getMinutes() >= 0)) {
-            workTimeInMins = workTimeInMins - endTime.getMinutes();
+        else if (startTime.getHours() == 12 && startTime.getMinutes() >= 0) {
+            // Kalau waktu 12:00 - 13:00
+            if (endTime.getHours() == 13 && endTime.getMinutes() == 0) {
+                workTimeInMins = 0;
+            }
+            // Kalau waktu start 12:00-12:59 dan end > 13:00
+            else if (endTime.getHours() >= 13 && endTime.getMinutes() >= 0) {
+                workTimeInMins = workTimeInMins - (60 - startTime.getMinutes());
+            }
+            // Kalau waktu 12:00 - 12:59
+            else if (endTime.getHours() == 12 && endTime.getMinutes() >= 0) {
+                workTimeInMins = 0;
+            }
         }
 
         let hour = Math.floor(workTimeInMins / 60);

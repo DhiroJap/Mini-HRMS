@@ -14,7 +14,7 @@
                         </div>
 
                         <form method="post">
-                        @csrf
+                            @csrf
                             <div class="flex justify-center items-center p-4 md:p-5 md:mx-4">
                                 <div class="sm:flex justify-between w-full">
                                     <div class="flex-row w-full sm:mr-4">

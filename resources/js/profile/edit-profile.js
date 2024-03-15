@@ -201,6 +201,17 @@ document.addEventListener("DOMContentLoaded", function () {
         return errorMessages;
     }
 
+    // Change avatar after input file, but not POST to server
+    let image = document.getElementById("img-container");
+    avatarInput.addEventListener("change", function () {
+        let reader = new FileReader();
+        reader.onload = function(e) {
+            image.src = e.target.result;
+        };
+
+        reader.readAsDataURL(this.files[0]);
+    });
+
     function validateFormConfirmChangePassword() {
         if (confirmChangePasswordInput.value.trim() !== "") {
             confirmChangePasswordButton.disabled = false;
